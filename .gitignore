@@ -1,0 +1,11 @@
+# Node
+node_modules/
+
+# Tailwind output
+dist/
+
+# VS Code settings (optional)
+.vscode/
+
+# macOS system files
+.DS_Store
