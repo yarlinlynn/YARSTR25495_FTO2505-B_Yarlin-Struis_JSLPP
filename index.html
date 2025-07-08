@@ -12,7 +12,7 @@
     <!-- 
         - favicon
     -->
-        <link rel="shortcut icon" href="" type="image/svg+xml">
+        <link rel="shortcut icon" href="/assets/images/image-bars.svg" type="image/svg+xml">
     
     <!-- 
         - google font link
@@ -37,70 +37,78 @@
         <script src="/assets/js/script.js" defer></script>
   </head>
 
-  <body class="font-body ">
+  <body class="font-body md:flex md:justify-between">
     <!-- Navigation Sidebar: Contains the logo, navigation links for boards, and theme toggle. -->
-    <nav class="pt-5 pb-5 lg:w-[300px]">
+    <nav class="pt-5 pb-5 md:w-[300px] md:pt-0">
       <div>
-        <h4 class="hidden">ALL BOARDS (1)</h4>
-        <div class="flex items-center pl-4 lg:absolute lg:top-[32.78px]">
+        <div class="flex items-center pl-4 md:pt-[32.78px] ">
             <img class="w-6 h-6 "
               src="/assets/images/image-bars.svg" alt="image bars">
             <img
               class="w-[159px] h-[23px]"
              src="/assets/images/kanban.svg" alt="kanban logo"/>
-          </div>
-        <button class="hidden">Launch Career</button>
+        </div>
+        <h4 class="hidden md:block md:mb-[19px] md:mt-[54px] md:ml-[32px] md:font-bold text-[12px] text-cool-gray leading-[1] tracking-[2.4px]">ALL BOARDS (1)</h4>
+        <button class="hidden md:block w-[276px] h-[48px] md:mr-[24px] md:text-[15px] md:bg-deep-indigo md:rounded-tr-[100px] md:rounded-br-[100px] md:pt-[14px] md:pb-[15px] md:pl-[64px] md:pr-[106px] 
+       md:text-white md:font-bold md:leading-[1]">Launch Career</button>
       </div>
     </nav>
 
     <!-- Main Layout: Header with board title, add task button, and main content area for task columns. -->
-    <div class="bg-snow-blue h-screen">
-      <header class="hidden">
+    <div class="bg-snow-blue h-screen md:w-full">
+      <header class="hidden md:block md:bg-my-white md:border md:border-light-periwinkle pt-[24px] px-[24px] pb-[32px]">
         <div>
-          <h2>Launch Career</h2>
+          <h2 class="md:text-2xl md:font-bold">Launch Career</h2>
         </div>
       </header>
 
-      <div class="py-8">
-        <main class="grid gap-[35px] pl-26px pr-29px">
+      <div class="py-8 md:p-[24px]">
+        <main class="flex sm:flex-col md:flex-row flex-wrap gap-[35px] pl-26px pr-29px md:overflow-hidden items-start">
+          
           <!-- Task Columns: Display tasks grouped by status (TODO, DOING, DONE). -->
           <div>
             <div class="flex items-center gap-[12px] mb-[25px]">
               <span class="w-[15px] h-[15px] rounded-full bg-[#49C4E5]"></span>
-              <h4 class="text-cool-gray text-xs font-bold">TODO</h4>
+              <h4 class="text-cool-gray text-xs font-bold">TODO (4)</h4>
             </div>
             <!-- Tasks container for TODO -->
-            <div>
+            <div class="md:w-[280px]">
               <div class="mb-[21px] bg-my-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black">Launch Epic Career 🚀</div>
-              <div class="bg-my-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black">Learn Data Structures and Algorithms 📚</div>
+              <div class="bg-my-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black">Conquer React ⚛️</div>
+                            <div class="mb-[21px] bg-my-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black">Understand Databases ⚙️</div>
+              <div class="bg-my-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black">Crush Frameworks 🖼️ </div>
             </div>
           </div>
+
           <!-- DOING Column -->
-          <div>
+          <div">
             <div class="flex items-center gap-[12px] mb-[25px]">
               <span class="w-[15px] h-[15px] rounded-full bg-deep-indigo"></span>
-              <h4 class="text-cool-gray text-xs font-bold">DOING</h4>
+              <h4 class="text-cool-gray text-xs font-bold">DOING (2)</h4>
             </div>
             <!-- Tasks container for DOING -->
-            <div>
+            <div class="md:w-[280px]">
               <div class="mb-[21px] bg-my-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black">Master JavaScript 💛</div>
-              <div class="bg-my-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black">Keep on Going 🏆</div>
+              <div class="bg-my-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black"> Never Give Up 🏆</div>
             </div>
           </div>
+
           <!-- DONE Column -->
           <div>
             <div class="flex items-center gap-[12px] mb-[25px]">
               <span class="w-[15px] h-[15px] rounded-full bg-[#67E2AE]"></span>
-              <h4 class="text-cool-gray text-[12px] font-bold leading-[100%] tracking-[2.4px] mb-[1px] w-[71px] h-[15px]">DONE</h4>
+              <h4 class="text-cool-gray text-[12px] font-bold leading-[100%] tracking-[2.4px] mb-[1px] w-[71px] h-[15px]">DONE (2)</h4>
             </div>
             <!-- Tasks container for DONE -->
-            <div>
-              <div class="mb-[21px] bg-my-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black">Contribute to Open Source Projects 🌐</div>
-              <div class="bg-my-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black">Build Portfolio Projects 🛠️</div>
+            <div class="md:w-[280px]">
+              <div class="mb-[21px] bg-my-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black">Explore ES6 Features 🚀</div>
+              <div class="bg-my-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black">Have fun 🥳</div>
             </div>
           </div>
+
         </main>
       </div>
+
     </div>
   </body>
 </html>
