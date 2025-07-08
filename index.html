@@ -37,59 +37,66 @@
         <script src="/assets/js/script.js" defer></script>
   </head>
 
-  <body>
+  <body class="font-body ">
     <!-- Navigation Sidebar: Contains the logo, navigation links for boards, and theme toggle. -->
-    <nav class="bg-purple-100 text-xl font-bold">
+    <nav class="pt-5 pb-5 lg:w-[300px]">
       <div>
-        <h4>ALL BOARDS (1)</h4>
-        <button>Launch Career</button>
+        <h4 class="hidden">ALL BOARDS (1)</h4>
+        <div class="flex items-center pl-4 lg:absolute lg:top-[32.78px]">
+            <img class="w-6 h-6 "
+              src="/assets/images/image-bars.svg" alt="image bars">
+            <img
+              class="w-[159px] h-[23px]"
+             src="/assets/images/kanban.svg" alt="kanban logo"/>
+          </div>
+        <button class="hidden">Launch Career</button>
       </div>
     </nav>
 
     <!-- Main Layout: Header with board title, add task button, and main content area for task columns. -->
-    <div>
-      <header>
+    <div class="bg-snow-blue h-screen">
+      <header class="hidden">
         <div>
           <h2>Launch Career</h2>
         </div>
       </header>
 
-      <div>
-        <main>
+      <div class="py-8">
+        <main class="grid gap-[35px] pl-26px pr-29px">
           <!-- Task Columns: Display tasks grouped by status (TODO, DOING, DONE). -->
           <div>
-            <div>
-              <span></span>
-              <h4>TODO</h4>
+            <div class="flex items-center gap-[12px] mb-[25px]">
+              <span class="w-[15px] h-[15px] rounded-full bg-[#49C4E5]"></span>
+              <h4 class="text-cool-gray text-xs font-bold">TODO</h4>
             </div>
             <!-- Tasks container for TODO -->
             <div>
-              <div>Launch Epic Career 🚀</div>
-              <div>Learn Data Structures and Algorithms 📚</div>
+              <div class="mb-[21px] bg-my-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black">Launch Epic Career 🚀</div>
+              <div class="bg-my-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black">Learn Data Structures and Algorithms 📚</div>
             </div>
           </div>
           <!-- DOING Column -->
           <div>
-            <div>
-              <span></span>
-              <h4>DOING</h4>
+            <div class="flex items-center gap-[12px] mb-[25px]">
+              <span class="w-[15px] h-[15px] rounded-full bg-deep-indigo"></span>
+              <h4 class="text-cool-gray text-xs font-bold">DOING</h4>
             </div>
             <!-- Tasks container for DOING -->
             <div>
-              <div>Master JavaScript 💛</div>
-              <div>Keep on Going 🏆</div>
+              <div class="mb-[21px] bg-my-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black">Master JavaScript 💛</div>
+              <div class="bg-my-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black">Keep on Going 🏆</div>
             </div>
           </div>
           <!-- DONE Column -->
           <div>
-            <div>
-              <span></span>
-              <h4>DONE</h4>
+            <div class="flex items-center gap-[12px] mb-[25px]">
+              <span class="w-[15px] h-[15px] rounded-full bg-[#67E2AE]"></span>
+              <h4 class="text-cool-gray text-[12px] font-bold leading-[100%] tracking-[2.4px] mb-[1px] w-[71px] h-[15px]">DONE</h4>
             </div>
             <!-- Tasks container for DONE -->
             <div>
-              <div>Contribute to Open Source Projects 🌐</div>
-              <div>Build Portfolio Projects 🛠️</div>
+              <div class="mb-[21px] bg-my-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black">Contribute to Open Source Projects 🌐</div>
+              <div class="bg-my-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black">Build Portfolio Projects 🛠️</div>
             </div>
           </div>
         </main>
