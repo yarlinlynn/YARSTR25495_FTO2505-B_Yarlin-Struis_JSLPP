@@ -23,7 +23,10 @@ module.exports = {
       spacing: {
         '26px': '26px',
         '29px': '29px',
-      }
+      },
+      boxShadow: {
+        'custom-shadow': '0px 0px 15px 6px #364E7E1A',
+      },
     },
   },
   plugins: [],

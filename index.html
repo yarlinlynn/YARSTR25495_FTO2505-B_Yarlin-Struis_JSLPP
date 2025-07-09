@@ -39,7 +39,7 @@
 
   <body class="font-body md:flex md:justify-between">
     <!-- Navigation Sidebar: Contains the logo, navigation links for boards, and theme toggle. -->
-    <nav class="pt-5 pb-5 md:w-[300px] md:pt-0">
+    <nav class="pt-5 pb-5 md:max-w-[300px] md:pt-0">
       <div>
         <div class="flex items-center pl-4 md:pt-[32.78px] ">
             <img class="w-6 h-6 "
@@ -55,7 +55,7 @@
     </nav>
 
     <!-- Main Layout: Header with board title, add task button, and main content area for task columns. -->
-    <div class="bg-snow-blue h-screen md:w-full">
+    <div class="bg-snow-blue lg:h-screen md:w-full">
       <header class="hidden md:block md:bg-my-white md:border md:border-light-periwinkle pt-[24px] px-[24px] pb-[32px]">
         <div>
           <h2 class="md:text-2xl md:font-bold">Launch Career</h2>
@@ -63,46 +63,46 @@
       </header>
 
       <div class="py-8 md:p-[24px]">
-        <main class="flex sm:flex-col md:flex-row flex-wrap gap-[35px] pl-26px pr-29px md:overflow-hidden items-start">
+        <main class="grid lg:grid-cols-3 gap-[35px] pl-26px pr-29px md:overflow-hidden items-start">
           
           <!-- Task Columns: Display tasks grouped by status (TODO, DOING, DONE). -->
-          <div>
+          <div class="md:w-full">
             <div class="flex items-center gap-[12px] mb-[25px]">
               <span class="w-[15px] h-[15px] rounded-full bg-[#49C4E5]"></span>
               <h4 class="text-cool-gray text-xs font-bold">TODO (4)</h4>
             </div>
             <!-- Tasks container for TODO -->
-            <div class="md:w-[280px]">
-              <div class="mb-[21px] bg-my-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black">Launch Epic Career 🚀</div>
-              <div class="bg-my-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black">Conquer React ⚛️</div>
-                            <div class="mb-[21px] bg-my-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black">Understand Databases ⚙️</div>
-              <div class="bg-my-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black">Crush Frameworks 🖼️ </div>
+            <div class="lg:w-[280px] ">
+              <div class="mb-[21px] bg-my-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow">Launch Epic Career 🚀</div>
+              <div class="mb-[21px] bg-my-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow">Conquer React ⚛️</div>
+              <div class="mb-[21px] bg-my-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow">Understand Databases ⚙️</div>
+              <div class="bg-my-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow">Crush Frameworks 🖼️ </div>
             </div>
           </div>
 
           <!-- DOING Column -->
-          <div">
+          <div class="md:w-full">
             <div class="flex items-center gap-[12px] mb-[25px]">
               <span class="w-[15px] h-[15px] rounded-full bg-deep-indigo"></span>
               <h4 class="text-cool-gray text-xs font-bold">DOING (2)</h4>
             </div>
             <!-- Tasks container for DOING -->
-            <div class="md:w-[280px]">
-              <div class="mb-[21px] bg-my-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black">Master JavaScript 💛</div>
-              <div class="bg-my-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black"> Never Give Up 🏆</div>
+            <div class="lg:w-[280px] ">
+              <div class="mb-[21px] bg-my-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow">Master JavaScript 💛</div>
+              <div class="bg-my-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow"> Never Give Up 🏆</div>
             </div>
           </div>
 
           <!-- DONE Column -->
-          <div>
+          <div class="md:w-full">
             <div class="flex items-center gap-[12px] mb-[25px]">
               <span class="w-[15px] h-[15px] rounded-full bg-[#67E2AE]"></span>
-              <h4 class="text-cool-gray text-[12px] font-bold leading-[100%] tracking-[2.4px] mb-[1px] w-[71px] h-[15px]">DONE (2)</h4>
+              <h4 class="text-cool-gray text-[12px] font-bold leading-[100%] tracking-[2.4px] mb-[1px] h-[15px]">DONE (2)</h4>
             </div>
             <!-- Tasks container for DONE -->
-            <div class="md:w-[280px]">
-              <div class="mb-[21px] bg-my-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black">Explore ES6 Features 🚀</div>
-              <div class="bg-my-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black">Have fun 🥳</div>
+            <div class="lg:w-[280px] ">
+              <div class="mb-[21px] bg-my-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow">Explore ES6 Features 🚀</div>
+              <div class="bg-my-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow">Have fun 🥳</div>
             </div>
           </div>
 
