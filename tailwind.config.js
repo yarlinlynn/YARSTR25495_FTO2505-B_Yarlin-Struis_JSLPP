@@ -4,21 +4,25 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'my-white': '#FFFFFF',
+        'white': '#FFFFFF',
         'soft-red': '#FF9898',
-        'coral-red': '#EA5555',
-        'snow-blue': '#F4F7FD',
-        'light-periwinkle': '#E4EBFA',
-        'cool-gray': '#828FA3',
-        'charcoal-gray': '#3E3F4E',
-        'deep-slate': '#2B2C37',
-        'slate-black': '#20212C',
-        'rich-black': '#000112',
+        'red': '#EA5555',
+        'light-grey': '#F4F7FD',
+        'background-light': '#E4EBFA',
+        'medium-grey': '#828FA3',
+        'gray-dark': '#3E3F4E',
+        'dark-grey': '#2B2C37',
+        'very-dark-grey': '#20212C',
+        'black': '#000112',
         'soft-indigo': '#A8A4FF',
-        'deep-indigo': '#635FC7',
+        'indigo': '#635FC7',
       },
       fontFamily: {
         body: ['"Plus Jakarta Sans"', 'sans-serif'],
+      },
+      gridTemplateColumns: {
+        // 3 columns, each 280px wide
+        'cols-280': 'repeat(3, 280px)',
       },
       spacing: {
         '26px': '26px',

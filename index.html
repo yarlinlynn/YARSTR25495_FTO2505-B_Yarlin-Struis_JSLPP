@@ -1,13 +1,15 @@
-<html>
+<html  lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- 
         - primary meta tags
     -->
-        <title>Kanban</title>
-        <meta name="title" content="" />
-        <meta name="description" content="">
+        <title>Kanban – Task Management Made Simple</title>
+        <meta name="title" 
+        content="Kanban – Task Management Made Simple" />
+        <meta name="description" 
+        content="Stay organized and boost your productivity with Kanban – a modern, clean task management app built for developers, teams, and creatives.">
 
     <!-- 
         - favicon
@@ -35,76 +37,77 @@
         - js link
     -->
         <script src="/assets/js/script.js" defer></script>
-  </head>
+</head>
 
-  <body class="font-body md:flex md:justify-between">
+  <body class="font-body text-[15px] md:flex md:justify-between lg:h-full lg:overflow-hidden">
     <!-- Navigation Sidebar: Contains the logo, navigation links for boards, and theme toggle. -->
-    <nav class="pt-5 pb-5 md:max-w-[300px] md:pt-0">
+    <nav role="navigation" class="h-[64px] pt-[20px] pb-[19px] md:max-w-[300px]  md:pt-0">
+      <a class="flex gap-[16px] items-center pl-[16px] md:pt-[32.78px] no-underline">
+        <img class="w-6 h-6 cursor-pointer"
+          src="/assets/images/image-bars.svg" alt="image bars">
+        <img class="h-[23px] cursor-pointer"
+          src="/assets/images/kanban.svg" alt="kanban logo"/>
+      </a>
       <div>
-        <div class="flex items-center pl-4 md:pt-[32.78px] ">
-            <img class="w-6 h-6 "
-              src="/assets/images/image-bars.svg" alt="image bars">
-            <img
-              class="w-[159px] h-[23px]"
-             src="/assets/images/kanban.svg" alt="kanban logo"/>
-        </div>
-        <h4 class="hidden md:block md:mb-[19px] md:mt-[54px] md:ml-[32px] md:font-bold text-[12px] text-cool-gray leading-[1] tracking-[2.4px]">ALL BOARDS (1)</h4>
-        <button class="hidden md:block w-[276px] h-[48px] md:mr-[24px] md:text-[15px] md:bg-deep-indigo md:rounded-tr-[100px] md:rounded-br-[100px] md:pt-[14px] md:pb-[15px] md:pl-[64px] md:pr-[106px] 
-       md:text-white md:font-bold md:leading-[1]">Launch Career</button>
+        <h4 class="hidden md:block md:mb-[19px] md:mt-[54px] md:ml-[32px] md:font-bold text-[12px] text-medium-grey leading-[1] tracking-[2.4px]">ALL BOARDS (1)</h4>
+        <button class="hidden md:block w-[276px] h-[48px] md:mr-[24px] md:text-[15px] md:bg-indigo md:rounded-tr-[100px] md:rounded-br-[100px] md:pt-[14px] md:pb-[15px] md:pl-[64px] md:pr-[106px] 
+       md:text-white md:font-bold md:leading-[1] hover:bg-soft-indigo duration-75 cursor-pointer focus:outline-none focus:ring-2 focus:ring-white">Launch Career</button>
       </div>
     </nav>
 
     <!-- Main Layout: Header with board title, add task button, and main content area for task columns. -->
-    <div class="bg-snow-blue lg:h-screen md:w-full">
-      <header class="hidden md:block md:bg-my-white md:border md:border-light-periwinkle pt-[24px] px-[24px] pb-[32px]">
+    <div class="lg:h-screen md:w-full md:border-l md:border-background-light">
+      <header class="hidden md:block md:bg-white md:border-b md:border-background-light pt-[29px] px-[24px] pb-[37px] lg:h-[96px]">
         <div>
-          <h2 class="md:text-2xl md:font-bold">Launch Career</h2>
+          <h2 class="md:text-2xl md:font-bold cursor-pointer">Launch Career</h2>
         </div>
       </header>
 
-      <div class="py-8 md:p-[24px]">
-        <main class="grid lg:grid-cols-3 gap-[35px] pl-26px pr-29px md:overflow-hidden items-start">
+      <div class="py-8 md:p-[24px] min-h-screen bg-light-grey">
+        <main role="main" class="grid lg:grid-cols-cols-280 xl:grid-cols-cols-280 gap-[20px] pl-26px pr-29px lg:overflow-x-hidden items-start">
           
           <!-- Task Columns: Display tasks grouped by status (TODO, DOING, DONE). -->
-          <div class="md:w-full">
+
+          <!-- TODO Column -->
+          <section  aria-labelledby="todo-heading" class="md:w-full">
             <div class="flex items-center gap-[12px] mb-[25px]">
-              <span class="w-[15px] h-[15px] rounded-full bg-[#49C4E5]"></span>
-              <h4 class="text-cool-gray text-xs font-bold">TODO (4)</h4>
+              <span class="w-[15px] h-[15px] rounded-full bg-[#49C4E5] cursor-pointer"></span>
+              <h4 id="todo-heading" class="text-medium-grey text-xs font-bold cursor-pointer">TODO (4)</h4>
             </div>
             <!-- Tasks container for TODO -->
-            <div class="lg:w-[280px] ">
-              <div class="mb-[21px] bg-my-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow">Launch Epic Career 🚀</div>
-              <div class="mb-[21px] bg-my-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow">Conquer React ⚛️</div>
-              <div class="mb-[21px] bg-my-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow">Understand Databases ⚙️</div>
-              <div class="bg-my-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow">Crush Frameworks 🖼️ </div>
-            </div>
-          </div>
+            <ul class="lg:w-[280px] ">
+              <li tabindex="0" class="mb-[21px] bg-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo">Launch Epic Career 🚀</li>
+              <li tabindex="0" class="mb-[21px] bg-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo">Conquer React ⚛️</li>
+              <li tabindex="0" class="mb-[21px] bg-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo">Understand Databases ⚙️</li>
+              <li tabindex="0" class="bg-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo">Crush Frameworks 🖼️ </li>
+            </ul>
+          </section>
 
-          <!-- DOING Column -->
-          <div class="md:w-full">
+          <!-- IN PROGRESS Column -->
+          <section aria-labelledby="doing-heading" class="md:w-full">
             <div class="flex items-center gap-[12px] mb-[25px]">
-              <span class="w-[15px] h-[15px] rounded-full bg-deep-indigo"></span>
-              <h4 class="text-cool-gray text-xs font-bold">DOING (2)</h4>
+              <span class="w-[15px] h-[15px] rounded-full bg-indigo cursor-pointer"></span>
+              <h4 id="doing-heading" class="text-medium-grey text-xs font-bold cursor-pointer">IN PROGRESS (2)</h4>
             </div>
             <!-- Tasks container for DOING -->
-            <div class="lg:w-[280px] ">
-              <div class="mb-[21px] bg-my-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow">Master JavaScript 💛</div>
-              <div class="bg-my-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow"> Never Give Up 🏆</div>
-            </div>
-          </div>
+            <ul class="lg:w-[280px] ">
+              <li tabindex="0" class="mb-[21px] bg-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo">Master JavaScript 💛</li>
+              <li tabindex="0" class="bg-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo"> Never Give Up 🏆</li>
+            </ul>
+          </section>
 
           <!-- DONE Column -->
-          <div class="md:w-full">
+          <section  aria-labelledby="done-heading" class="md:w-full">
             <div class="flex items-center gap-[12px] mb-[25px]">
-              <span class="w-[15px] h-[15px] rounded-full bg-[#67E2AE]"></span>
-              <h4 class="text-cool-gray text-[12px] font-bold leading-[100%] tracking-[2.4px] mb-[1px] h-[15px]">DONE (2)</h4>
+              <span class="w-[15px] h-[15px] rounded-full bg-[#67E2AE] cursor-pointer"></span>
+              <h4 id="done-heading" class="text-medium-grey text-[12px] font-bold leading-[100%] tracking-[2.4px] mb-[1px] h-[15px] cursor-pointer">DONE (2)</h4>
             </div>
             <!-- Tasks container for DONE -->
-            <div class="lg:w-[280px] ">
-              <div class="mb-[21px] bg-my-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow">Explore ES6 Features 🚀</div>
-              <div class="bg-my-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow">Have fun 🥳</div>
-            </div>
-          </div>
+            <ul class="lg:w-[280px] ">
+              <li tabindex="0" class="mb-[21px] bg-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo">Explore ES6 Features 🚀</li>
+              <li tabindex="0" class="bg-white pt-5 px-5 pb-5 rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow mb-[9px] cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo">Have fun 🥳</li>
+            </ul>
+          </section>
 
         </main>
       </div>
