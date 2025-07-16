@@ -6,12 +6,12 @@ A sleek, responsive Kanban board built with **Tailwind CSS** and semantic HTML. 
 
 ![Figma Design for Challenge 1-3](<assets/Figma Design.png>)
 
-> JSL01 Challenge Brief: Kanban Board UI Implementation:
 
 This project involves developing a **visually accurate and fully responsive Kanban board** that aligns with the provided **Figma design**. The board should be structured into multiple columns and include task cards, a static side panel, and a well-defined theme to ensure a **professional and polished user experience.**
 
+<br/>
 
-## Key Objectives
+### JSL01 Challenge Key Objectives:
 
 - [x] Implement a **favicon and page title** that match the application’s theme for a professional look.
 - [x] Create a **Kanban board with multiple columns** (e.g., "To Do", "In Progress", "Done") that **exactly replicates** the Figma design layout.
@@ -23,18 +23,39 @@ This project involves developing a **visually accurate and fully responsive Kanb
 
 <br/>
 
+### JSL02 Challenge Key Objectives:
+
+#### Logic & User Interaction
+
+- [x] Ensure the JavaScript file is correctly linked to the HTML document.
+- [x] Prompt the user to enter details (title, description, status) for two separate tasks and store them in variables.
+- [ ] Convert all status inputs to lowercase automatically for consistency.
+- [ ] Validate the status input to allow only "todo", "doing", or "done" and repeatedly prompt the user until a valid status is entered.
+- [ ] Display the title and status of completed tasks (status: "done") in the console.
+- [ ] If no tasks are marked as "done", show a motivational message in the console: "No tasks completed, let's get to work!".
+
+#### Code Quality & Maintainability
+
+- [ ] Use descriptive variable names to enhance readability and maintainability.
+- [ ] Include clear comments explaining complex logic and functionality for easier understanding.
+
+<br/>
+
 ### Setup Instructions
 
 To run the project locally:
 
 1. Clone the repository
 ```
-git clone https://github.com/yarlinlynn/JSL01-2025.git
-cd JSL01-2025
+git clone https://github.com/YARSTR25495_FTO2505-B_Yarlin-Struis_JSL01.git
 ```
 2. Install dependencies
 ```
-npm install
+yarlinlynn@Yarlins-MacBook-Air YARSTR25495_FTO2505-B_Yarlin-Struis_JSL01 % npm list tailwindcss
+YARSTR25495_FTO2505-B_Yarlin-Struis_JSL01@ /Users/yarlinlynn/Downloads/YARSTR25495_FTO2505-B_Yarlin-Struis_JSL01
+└── (empty)
+
+yarlinlynn@Yarlins-MacBook-Air YARSTR25495_FTO2505-B_Yarlin-Struis_JSL01 % npm install -D tailwindcss
 ```
 3. Watch Tailwind for changes
 ```
@@ -69,4 +90,3 @@ This project is for educational use only.
 
 ### Credits
 Design provided by **CodeSpace** via Figma; [https://www.figma.com/design/y7bFCUYL5ZHfPeojACBXg2/Challenge-1-%7C-JSL?node-id=0-1&t=yngAIXXKnJfH7Jj3-1](https://www.figma.com/design/y7bFCUYL5ZHfPeojACBXg2/Challenges-%7C-JSL?node-id=6033-10647&t=8uFG8HuyuOHVKluu-0)
-
