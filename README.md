@@ -29,8 +29,8 @@ This project involves developing a **visually accurate and fully responsive Kanb
 
 - [x] Ensure the JavaScript file is correctly linked to the HTML document.
 - [x] Prompt the user to enter details (title, description, status) for two separate tasks and store them in variables.
-- [ ] Convert all status inputs to lowercase automatically for consistency.
-- [ ] Validate the status input to allow only "todo", "doing", or "done" and repeatedly prompt the user until a valid status is entered.
+- [x] Convert all status inputs to lowercase automatically for consistency.
+- [x] Validate the status input to allow only "todo", "doing", or "done" and repeatedly prompt the user until a valid status is entered.
 - [ ] Display the title and status of completed tasks (status: "done") in the console.
 - [ ] If no tasks are marked as "done", show a motivational message in the console: "No tasks completed, let's get to work!".
 
