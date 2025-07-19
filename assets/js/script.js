@@ -12,7 +12,7 @@
 // if both title and status is empty alert; Invalid status. Please enter 'todo', 'in progress' or 'done'. until a condition is met
 
 
-
+// OBJECTIVES:
 // Prompt the user to enter details (title, description, status) for two separate tasks and store them in variables.
 // Convert all status inputs to lowercase automatically for consistency.
 // Validate the status input to allow only "todo", "doing", or "done" and repeatedly prompt the user until a valid status is entered.
@@ -22,32 +22,50 @@ let task = [];
 // TASK 1:
 let taskOneTitle = prompt('Enter task 1 title:');
 let taskOneDescripttion = prompt('Enter your task 1 description:');
-let taskOneStatus = prompt('Enter your task 1 status:').toLowerCase();
-while(!taskOneStatus === 'todo' && !taskOneStatus === 'in progress' && !taskOneStatus === 'done') {
+let taskOneStatus = prompt('Enter your task 1 status:').toLowerCase().trim();
+while(taskOneStatus !== 'todo' && taskOneStatus !== 'in progress' && taskOneStatus !== 'done') {
   alert(`Invalid status. Please enter 'todo', 'in progress' or 'done'.`);
-  taskOneStatus = prompt('Enter your task 1 status:').toLowerCase();
+  taskOneStatus = prompt('Enter your task 1 status:').toLowerCase().trim();
 }
 
-task.push({title: taskOneTitle, description: taskOneDescripttion, status: taskOneStatus});
+task.push({
+  title: taskOneTitle, 
+  description: taskOneDescripttion, 
+  status: taskOneStatus
+});
+
+// Display the title and status of completed tasks (status: "done") in the console.
+
+if(task[0].status === 'done') {
+  console.log("Title:" + task[0].title + ", " + "Status:" + " " + task[0].status);
+}
 
 // TASK 2:
 let taskTwoTitle = prompt('Enter task 2 title:');
 let taskTwoDescripttion = prompt('Enter your task 2 description:');
-let taskTwoStatus = prompt('Enter your task 2 status:').toLowerCase();
-while(!taskTwoStatus === 'todo' && !taskTwoStatus === 'in progress' && !taskTwoStatus === 'done') {
+let taskTwoStatus = prompt('Enter your task 2 status:').toLowerCase().trim();
+while(taskTwoStatus !== 'todo' && taskTwoStatus !== 'in progress' && taskTwoStatus !== 'done') {
   alert(`Invalid status. Please enter 'todo', 'in progress' or 'done'.`);
-  taskTwoStatus = prompt('Enter your task 2 status:').toLowerCase();
+  taskTwoStatus = prompt('Enter your task 2 status:').toLowerCase().trim();
 }
 
-task.push({title: taskOneTitle, description: taskTwoDescripttion, status: taskTwoStatus});
+task.push({
+  title: taskTwoTitle, 
+  description: taskTwoDescripttion, 
+  status: taskTwoStatus
+});
 
 // Display the title and status of completed tasks (status: "done") in the console.
+
+if(task[1].status === 'done') {
+  console.log("Title:" + task[1].title + ", " + "Status:" + " "+ task[1].status);
+}
+
 // If no tasks are marked as "done", show a motivational message in the console: "No tasks completed, let's get to work!".
 
-
-
-
-
+if(task[0].status !== 'done' && task[1].status !== 'done') {
+  console.log("No tasks completed, let's get to work");
+}
 
 // JSL03 CHALLENGE:
 
