@@ -37,7 +37,7 @@ task.push({
 // Display the title and status of completed tasks (status: "done") in the console.
 
 if(task[0].status === 'done') {
-  console.log("Title:" + task[0].title + ", " + "Status:" + " " + task[0].status);
+  console.log("Title: " + task[0].title + ", " + "Status:" + " " + task[0].status);
 }
 
 // TASK 2:
@@ -58,7 +58,7 @@ task.push({
 // Display the title and status of completed tasks (status: "done") in the console.
 
 if(task[1].status === 'done') {
-  console.log("Title:" + task[1].title + ", " + "Status:" + " "+ task[1].status);
+  console.log("Title: " + task[1].title + ", " + "Status:" + " "+ task[1].status);
 }
 
 // If no tasks are marked as "done", show a motivational message in the console: "No tasks completed, let's get to work!".
