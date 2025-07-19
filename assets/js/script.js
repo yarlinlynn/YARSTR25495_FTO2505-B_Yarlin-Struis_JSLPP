@@ -17,6 +17,8 @@
 // Convert all status inputs to lowercase automatically for consistency.
 // Validate the status input to allow only "todo", "doing", or "done" and repeatedly prompt the user until a valid status is entered.
 
+let task = [];
+
 // TASK 1:
 let taskOneTitle = prompt('Enter task 1 title:');
 let taskOneDescripttion = prompt('Enter your task 1 description:');
@@ -26,7 +28,7 @@ while(!taskOneStatus === 'todo' && !taskOneStatus === 'in progress' && !taskOneS
   taskOneStatus = prompt('Enter your task 1 status:').toLowerCase();
 }
 
-console.log(` Title: ${taskOneTitle}, Description: ${taskOneDescripttion}, Status: ${taskOneStatus}`);
+task.push({title: taskOneTitle, description: taskOneDescripttion, status: taskOneStatus});
 
 // TASK 2:
 let taskTwoTitle = prompt('Enter task 2 title:');
@@ -37,7 +39,7 @@ while(!taskTwoStatus === 'todo' && !taskTwoStatus === 'in progress' && !taskTwoS
   taskTwoStatus = prompt('Enter your task 2 status:').toLowerCase();
 }
 
-console.log(` Title: ${taskTwoTitle}, Description: ${taskTwoDescripttion}, Status: ${taskTwoStatus}`);
+task.push({title: taskOneTitle, description: taskTwoDescripttion, status: taskTwoStatus});
 
 // Display the title and status of completed tasks (status: "done") in the console.
 // If no tasks are marked as "done", show a motivational message in the console: "No tasks completed, let's get to work!".
