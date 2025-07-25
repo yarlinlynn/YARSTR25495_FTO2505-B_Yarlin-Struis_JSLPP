@@ -13,6 +13,8 @@ This project involves developing a **visually accurate and fully responsive Kanb
 
 ### JSL01 Challenge Key Objectives:
 
+#### Logic & User Interaction
+
 - [x] Implement a **favicon and page title** that match the application’s theme for a professional look.
 - [x] Create a **Kanban board with multiple columns** (e.g., "To Do", "In Progress", "Done") that **exactly replicates** the Figma design layout.
 - [x] Ensure the **board’s layout, colours, typography, and spacing** strictly follow the Figma specifications for visual consistency.
@@ -33,6 +35,33 @@ This project involves developing a **visually accurate and fully responsive Kanb
 - [x] Validate the status input to allow only "todo", "doing", or "done" and repeatedly prompt the user until a valid status is entered.
 - [x] Display the title and status of completed tasks (status: "done") in the console.
 - [x] If no tasks are marked as "done", show a motivational message in the console: "No tasks completed, let's get to work!".
+
+<br/>
+
+### JSL03 Challenge Key Objectives:
+
+#### Logic & User Interaction
+
+- [x] Store tasks as **objects inside an array** for structured data management.
+- [x] Allow users to **add up to three new tasks** to the existing task list.
+- [x] Ensure each new task has a **unique incremental ID** based on the last task in the array.
+- [x] Prompt users to enter **task details (title, description, status)** and store them in an object.
+- [x] Alert users when they reach the task limit with the message:
+  _"There are enough tasks on your board, please check them in the console."_
+  Implement a **filter function** to display only tasks with the status `"done"`.
+- [x] Log **all tasks** in the console with a clear label for easy review.
+- [x] Log **only completed tasks** (status: `"done"`) in the console under a "Completed Tasks" label for quick reference.
+
+#### Code Quality & Maintainability
+
+- [x] Use meaningful variable and function names to ensure readability and maintainability.
+- [x] Follow consistent indentation and formatting to enhance code clarity.
+- [x] Include comments explaining key logic and functionality to support future modifications.
+
+#### Expected Outcome
+
+- [x] A **structured and limited task management system** that enables users to add, review, and filter tasks efficiently while ensuring **clean, well-documented, and maintainable code.**
+- [x] **Console Log of all and completed tasks**
 
 <br/>
 
