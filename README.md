@@ -52,16 +52,15 @@ This project involves developing a **visually accurate and fully responsive Kanb
 - [x] Log **all tasks** in the console with a clear label for easy review.
 - [x] Log **only completed tasks** (status: `"done"`) in the console under a "Completed Tasks" label for quick reference.
 
-#### Code Quality & Maintainability
+##### Code Quality & Maintainability
 
 - [x] Use meaningful variable and function names to ensure readability and maintainability.
 - [x] Follow consistent indentation and formatting to enhance code clarity.
 - [x] Include comments explaining key logic and functionality to support future modifications.
 
-#### Expected Outcome
+##### Expected Outcome
 
-- [x] A **structured and limited task management system** that enables users to add, review, and filter tasks efficiently while ensuring **clean, well-documented, and maintainable code.**
-- [x] **Console Log of all and completed tasks**
+![assets/JSL03 output.png](<assets/JSL03 output.png>)
 
 <br/>
 
