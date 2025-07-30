@@ -63,33 +63,41 @@
         </div>
       </header>
 
-      <div class="pt-[32px] md:p-[24px] min-h-screen bg-light-grey">
-        <main role="main" class="grid lg:grid-cols-2 xl:grid-cols-cols-280 gap-[19px] pl-26px pr-29px items-start">
+      <div class="pt-[32px] md:p-[24px] min-h-screen bg-light-grey"> <!-- grid lg:grid-cols-2 xl:grid-cols-cols-280 -->
+        <main role="main" class="flex flex-wrap m-auto gap-[19px] pl-26px pr-29px items-start">
           
           <!-- Task Columns: Display tasks grouped by status (TODO, DOING, DONE). -->
 
           <!-- TODO Column -->
-          <section  aria-labelledby="todo-heading" class="md:w-full">
+          <section id="taskElement"  aria-labelledby="todo-heading" class="md:w-[280px] w-full">
             <div class="flex items-center gap-[12px] mb-[25px] ">
               <span class="w-[15px] h-[15px] rounded-full bg-[#49C4E5] cursor-pointer"></span>
               <h4 id="todo-heading" class="text-medium-grey text-xs font-bold cursor-pointer tracking-[2.4px]">TODO (4)</h4>
             </div>
             <!-- Tasks container for TODO -->
             <ul class="lg:w-[280px] ">
-              <li tabindex="0" class="mb-[21px] bg-white h-[60px] pt-[20px] px-[19px] pb-[21px] rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo">Launch Epic Career 🚀</li>
-              <li tabindex="0" class="mb-[21px] bg-white h-[60px] pt-[20px] px-[19px] pb-[21px] rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo">Conquer React ⚛️</li>
-              <li tabindex="0" class="mb-[21px] bg-white height-[60px] pt-[20px] px-[19px] pb-[21px] rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo">Understand Databases ⚙️</li>
-              <li tabindex="0" class="bg-white h-[60px] pt-[20px] px-[19px] pb-[21px] rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo">Crush Frameworks 🖼️ </li>
+              <li id="task"
+              tabindex="0" 
+              class="mb-[21px] bg-white h-[60px] pt-[20px] px-[19px] pb-[21px] rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo">Launch Epic Career 🚀</li>
+              <li id="task"
+              tabindex="0" 
+              class="mb-[21px] bg-white h-[60px] pt-[20px] px-[19px] pb-[21px] rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo">Conquer React ⚛️</li>
+              <li id="task"
+              tabindex="0" 
+              class="mb-[21px] bg-white height-[60px] pt-[20px] px-[19px] pb-[21px] rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo">Understand Databases ⚙️</li>
+              <li id="task"
+              tabindex="0" 
+              class="bg-white h-[60px] pt-[20px] px-[19px] pb-[21px] rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo">Crush Frameworks 🖼️ </li>
             </ul>
           </section>
 
           <!-- IN PROGRESS Column -->
-          <section aria-labelledby="doing-heading" class="md:w-full">
-            <div class="flex items-center gap-[12px] mb-[25px] mt-[35px] lg:mt-0">
+          <section aria-labelledby="doing-heading" class="md:w-[280px] w-full">
+            <div class="flex items-center gap-[12px] mb-[25px] mt-[35px] md:mt-0 lg:mt-0">
               <span class="w-[15px] h-[15px] rounded-full bg-indigo cursor-pointer"></span>
               <h4 id="doing-heading" class="text-medium-grey text-xs font-bold cursor-pointer tracking-[2.4px]">IN PROGRESS (2)</h4>
             </div>
-            <!-- Tasks container for DOING -->
+            <!-- Tasks container for IN PROGRESS -->
             <ul class="lg:w-[280px] ">
               <li tabindex="0" class="mb-[21px] bg-white h-[60px] pt-[20px] px-[19px] pb-[21px] rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo">Master JavaScript 💛</li>
               <li tabindex="0" class="bg-white h-[60px] pt-[20px] px-[19px] pb-[21px] rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo"> Never Give Up 🏆</li>
@@ -97,8 +105,8 @@
           </section>
 
           <!-- DONE Column -->
-          <section  aria-labelledby="done-heading" class="md:w-full">
-            <div class="flex items-center gap-[12px] mb-[25px] mt-[35px] xl:mt-0">
+          <section  aria-labelledby="done-heading" class="md:w-[280px] w-full">
+            <div class="flex items-center gap-[12px] mb-[25px] mt-[35px] lg:mt-0">
               <span class="w-[15px] h-[15px] rounded-full bg-[#67E2AE] cursor-pointer"></span>
               <h4 id="done-heading" class="text-medium-grey text-[12px] font-bold leading-[100%] tracking-[2.4px] mb-[1px] h-[15px] cursor-pointer">DONE (2)</h4>
             </div>
@@ -113,5 +121,61 @@
       </div>
 
     </div>
+
+    <section id="modalPopUp" class=" absolute top-0 w-full hidden"> 
+      <!-- backdrop for modal -->
+      <div class="bg-black opacity-50 fixed top-0 left-0 w-full h-[130vh]"></div>
+           
+      <!-- model popup container -->
+        <div id="modalContainer" class="bg-white absolute top-[99px] lg:top-[249px] left-0 right-0 m-auto w-[343px] md:w-[600px] p-[24px] rounded-[6px] h-[410px] md:h-[415px] flex flex-col g-[24px]">
+          
+          <div class="flex items-center justify-between pb-4">
+            <h2 class="text-[18px] font-bold leading-100%">Task</h2>
+                
+            <img src="./assets/images/Group 45.svg" alt="close button">
+          </div>
+
+          <form class="flex flex-col">
+            <label for="taskTitle"
+            class="pb-[8px] text-[12px] font-bold text-medium-grey">
+              Title
+            </label>
+            <input id="taskTitle"
+            class="border border-gray-300 rounded h-[40px] w-full pt-[8px] pb-[9px] pl-[18px] mb-[24px]"
+            />
+
+            <label for="taskDescription"
+            class="pb-[8px] text-[12px] font-bold text-medium-grey">
+              Description
+            </label>
+            <textarea id="taskDescription"
+            class="h-[112px] border border-gray-300 rounded w-full pt-[8px] pb-[9px] pl-[18px] mb-[24px]"></textarea>
+
+            <label for="taskStatus"
+            class="pb-[8px] text-[12px] font-bold text-medium-grey">
+              Status
+            </label>
+            <!-- dropdown -->
+             <div class="relative  mb-[24px]">
+                <select id="taskStatus" name="status"
+                class="appearance-none font-body border border-gray-300 rounded w-full pt-[8px] pb-[9px] pl-[18px] mb-[24px] leading-[23px] text-[13px]">
+                  <option value="option1">todo</option>
+                  <option value="option2">in progress</option>
+                  <option value="option3">done</option>
+                </select>
+
+                  <!-- Custom dropdown arrow -->
+                <div class="pointer-events-none absolute inset-y-0 flex items-center text-medium-grey right-[16.78px] top-[18.55px] bottom-[15.6px] w-[9.4px] h-[4.7px] md:w-[14px] md:h-[8px]">
+                  <svg class="" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+
+              </div> 
+
+          </form> 
+              
+        </div> 
+    </section>
   </body>
 </html>
