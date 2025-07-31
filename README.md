@@ -4,7 +4,7 @@ A sleek, responsive Kanban board built with **Tailwind CSS** and semantic HTML. 
 
 ## 📸 Screenshots
 
-![Figma Design for Challenge 1-3](<assets/Figma Design.png>)
+![Figma Design for Challenge 4](<assets/design /JSL04 challenge.png>)
 
 
 This project involves developing a **visually accurate and fully responsive Kanban board** that aligns with the provided **Figma design**. The board should be structured into multiple columns and include task cards, a static side panel, and a well-defined theme to ensure a **professional and polished user experience.**
@@ -58,9 +58,27 @@ This project involves developing a **visually accurate and fully responsive Kanb
 - [x] Follow consistent indentation and formatting to enhance code clarity.
 - [x] Include comments explaining key logic and functionality to support future modifications.
 
-##### Expected Outcome
+### JSL04 Challenge Key Objects:
 
-![assets/JSL03 output.png](<assets/JSL03 output.png>)
+##### Dynamic Task Display & Interaction
+- [ ] Dynamically generate task elements from the given initial data and insert them into the DOM.
+- [ ] Ensure tasks are placed in the correct columns ("To Do", "In Progress", "Done") based on their status.
+- [ ] Clicking a task should open a modal displaying its details.
+**The modal should include**:
+- [ ] Editable input fields for the task title and description.
+- [ ] A select dropdown showing the current status with other status options available.
+- [ ] A close button that allows users to exit the modal easily.
+ 
+
+##### Design & Responsiveness
+- [x] Ensure the modal matches the Figma design, including a backdrop effect for focus.
+- [x] Implement a fully responsive modal that works on both desktop and mobile devices.
+ 
+
+##### Code Structure & Maintainability
+- [ ] Structure JavaScript using modular, single-responsibility functions.
+- [ ] Use descriptive and meaningful variable and function names for clarity.
+- [ ] Add JSDoc comments to major functions, describing their purpose, parameters, and return values for better documentation.
 
 <br/>
 
