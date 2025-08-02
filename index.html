@@ -36,30 +36,40 @@
     <!-- 
         - js link
     -->
-        <script src="/assets/js/script.js" defer></script>
+        <!-- <script src="/assets/js/initialData.js" type="module" defer></script> -->
+        <script src="/assets/js/script.js" type="module" defer></script>
 </head>
 
   <body class="font-body text-[15px] md:flex md:justify-between min-h-screen">
     <!-- Navigation Sidebar: Contains the logo, navigation links for boards, and theme toggle. -->
-    <nav role="navigation" class="h-[64px] pt-[20px] pb-[19px] md:max-w-[300px]  md:pt-0">
+    <nav role="navigation" class="h-[64px] pt-[20px] pb-[19px] md:max-w-[300px]  md:pt-0 sm: flex sm:items-center sm:justify-between md:block">
       <a class="flex gap-[16px] items-center pl-[16px] md:pt-[32.78px] no-underline">
         <img class="w-6 h-6 cursor-pointer"
           src="/assets/images/image-bars.svg" alt="image bars">
         <img class="h-[23px] cursor-pointer"
           src="/assets/images/kanban.svg" alt="kanban logo"/>
       </a>
+      <span id="newTaskButton" tabindex="0"
+        class="bg-indigo text-white w-[33px] h-[33px] text-center pt-[3px] text-[15px] font-bold ml-auto mr-[29px] rounded-[24px] md:hidden lg:hidden xl:hidden">
+        +
+      </span>
       <div>
         <h4 class="hidden md:block md:mb-[19px] md:mt-[54px] md:ml-[32px] md:font-bold text-[12px] text-medium-grey leading-[1] tracking-[2.4px]">ALL BOARDS (1)</h4>
-        <button class="hidden md:block w-[276px] h-[48px] md:mr-[24px] md:text-[15px] md:bg-indigo md:rounded-tr-[100px] md:rounded-br-[100px] md:pt-[14px] md:pb-[15px] md:pl-[64px] md:pr-[106px] 
-       md:text-white md:font-bold md:leading-[1] hover:bg-soft-indigo duration-75 cursor-pointer focus:outline-none focus:ring-2 focus:ring-white">Launch Career</button>
+        <button tabindex="0" class="hidden md:block w-[276px] h-[48px] md:mr-[24px] md:text-[15px] md:bg-indigo md:rounded-tr-[100px] md:rounded-br-[100px] md:pt-[14px] md:pb-[15px] md:pl-[64px] md:pr-[106px] 
+       md:text-white md:font-bold md:leading-[1] hover:bg-soft-indigo duration-75 cursor-pointer focus:ring-2 focus:ring-white">Launch Career</button>
       </div>
     </nav>
 
     <!-- Main Layout: Header with board title, add task button, and main content area for task columns. -->
     <div class="lg:h-screen md:w-full md:border-l md:border-background-light lg:overflow-x-hidden">
       <header class="hidden md:block md:bg-white md:border-b md:border-background-light pt-[29px] px-[24px] pb-[37px] lg:h-[96px]">
-        <div>
+        <div class="md:flex md:items-center md:justify-between">
           <h2 class="md:text-2xl md:font-bold cursor-pointer">Launch Career</h2>
+          <!-- Add new task button for desktop-->
+           <span class="bg-indigo text-white font-bold text-[10px] lg:text-[12px] xl:text-[15px] py-[10px] px-[24px] rounded-[24px] focus:ring-2 focus:ring-white cursor-pointer hidden md:block" 
+           id="newTaskButton" tabindex="0">
+            +  Add New Task
+          </span>
         </div>
       </header>
 
@@ -69,52 +79,39 @@
           <!-- Task Columns: Display tasks grouped by status (TODO, DOING, DONE). -->
 
           <!-- TODO Column -->
-          <section id="taskElement"  aria-labelledby="todo-heading" class="md:w-[280px] w-full">
+          <section  aria-labelledby="todo-heading" class="md:w-[280px] w-full">
             <div class="flex items-center gap-[12px] mb-[25px] ">
               <span class="w-[15px] h-[15px] rounded-full bg-[#49C4E5] cursor-pointer"></span>
-              <h4 id="todo-heading" class="text-medium-grey text-xs font-bold cursor-pointer tracking-[2.4px]">TODO (4)</h4>
-            </div>
+              <h4 id="todo-heading" class="text-medium-grey text-xs font-bold cursor-pointer tracking-[2.4px]">TODO</h4>
+            </div> 
             <!-- Tasks container for TODO -->
-            <ul class="lg:w-[280px] ">
-              <li id="task"
-              tabindex="0" 
-              class="mb-[21px] bg-white h-[60px] pt-[20px] px-[19px] pb-[21px] rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo">Launch Epic Career 🚀</li>
-              <li id="task"
-              tabindex="0" 
-              class="mb-[21px] bg-white h-[60px] pt-[20px] px-[19px] pb-[21px] rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo">Conquer React ⚛️</li>
-              <li id="task"
-              tabindex="0" 
-              class="mb-[21px] bg-white height-[60px] pt-[20px] px-[19px] pb-[21px] rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo">Understand Databases ⚙️</li>
-              <li id="task"
-              tabindex="0" 
-              class="bg-white h-[60px] pt-[20px] px-[19px] pb-[21px] rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo">Crush Frameworks 🖼️ </li>
-            </ul>
+            <ul class="lg:w-[280px]" id="todoColumn">
+              
+            </ul>  
           </section>
 
           <!-- IN PROGRESS Column -->
           <section aria-labelledby="doing-heading" class="md:w-[280px] w-full">
             <div class="flex items-center gap-[12px] mb-[25px] mt-[35px] md:mt-0 lg:mt-0">
               <span class="w-[15px] h-[15px] rounded-full bg-indigo cursor-pointer"></span>
-              <h4 id="doing-heading" class="text-medium-grey text-xs font-bold cursor-pointer tracking-[2.4px]">IN PROGRESS (2)</h4>
-            </div>
+              <h4 id="doing-heading" class="text-medium-grey text-xs font-bold cursor-pointer tracking-[2.4px]">IN PROGRESS</h4>
+            </div> 
             <!-- Tasks container for IN PROGRESS -->
-            <ul class="lg:w-[280px] ">
-              <li tabindex="0" class="mb-[21px] bg-white h-[60px] pt-[20px] px-[19px] pb-[21px] rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo">Master JavaScript 💛</li>
-              <li tabindex="0" class="bg-white h-[60px] pt-[20px] px-[19px] pb-[21px] rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo"> Never Give Up 🏆</li>
-            </ul>
+            <ul class="lg:w-[280px]" id="inProgressColumn">
+              
+            </ul>  
           </section>
 
           <!-- DONE Column -->
-          <section  aria-labelledby="done-heading" class="md:w-[280px] w-full">
+          <section aria-labelledby="done-heading" class="md:w-[280px] w-full">
             <div class="flex items-center gap-[12px] mb-[25px] mt-[35px] lg:mt-0">
               <span class="w-[15px] h-[15px] rounded-full bg-[#67E2AE] cursor-pointer"></span>
-              <h4 id="done-heading" class="text-medium-grey text-[12px] font-bold leading-[100%] tracking-[2.4px] mb-[1px] h-[15px] cursor-pointer">DONE (2)</h4>
+              <h4 id="done-heading" class="text-medium-grey text-[12px] font-bold leading-[100%] tracking-[2.4px] mb-[1px] h-[15px] cursor-pointer">DONE</h4>
             </div>
             <!-- Tasks container for DONE -->
-            <ul class="lg:w-[280px] ">
-              <li tabindex="0" class="mb-[21px] bg-white h-[60px] pt-[20px] px-[19px] pb-[21px] rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo">Explore ES6 Features 🚀</li>
-              <li tabindex="0" class="bg-white h-[60px] pt-[20px] px-[19px] pb-[21px] rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow mb-[9px] cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo">Have fun 🥳</li>
-            </ul>
+            <ul class="lg:w-[280px]" id="doneColumn">
+              
+            </ul> 
           </section>
 
         </main>
@@ -122,7 +119,8 @@
 
     </div>
 
-    <section id="modalPopUp" class=" absolute top-0 w-full hidden"> 
+    <!-- Modal PopUp -->
+    <section id="modalPopUp" class=" absolute top-0 w-full "> 
       <!-- backdrop for modal -->
       <div class="bg-black opacity-50 fixed top-0 left-0 w-full h-[130vh]"></div>
            
@@ -177,5 +175,55 @@
               
         </div> 
     </section>
+
+    <!-- Add New Task Form -->
+     <section id="newTaskModal" class=" absolute top-0 w-full hidden">
+      <!-- backdrop for modal -->
+      <div class="bg-black opacity-50 fixed top-0 left-0 w-full h-[130vh]"></div>
+
+      <!-- Form Container -->
+      <div id="formContainer" 
+        class="bg-white absolute top-[99px] lg:top-[249px] left-0 right-0 m-auto w-[343px] md:w-[600px] p-[24px] rounded-[6px] h-[410px] md:h-[415px] flex flex-col g-[24px]">
+      <div class="flex items-center justify-between pb-4">
+        <h2 class="text-[18px] font-bold leading-100%">Add New Task</h2>
+                
+        <img src="./assets/images/Group 45.svg" alt="close button">
+      </div>
+
+      <form class="flex flex-col">
+        <label for="taskTitle" class="pb-[8px] text-[12px] font-bold text-medium-grey">
+          Title
+        </label>
+        <input id="taskTitle" class="border border-gray-300 rounded h-[40px] w-full pt-[8px] pb-[9px] pl-[18px] mb-[24px]"
+        />
+
+        <label for="taskDescription" class="pb-[8px] text-[12px] font-bold text-medium-grey">
+          Description
+        </label>
+        <textarea id="taskDescription" class="h-[112px] border border-gray-300 rounded w-full pt-[8px] pb-[9px] pl-[18px] mb-[24px]"></textarea>
+
+        <label for="taskStatus" class="pb-[8px] text-[12px] font-bold text-medium-grey">
+          Status
+        </label>
+        <!-- dropdown -->
+        <div class="relative  mb-[24px]">
+          <select id="taskStatus" name="status" class="appearance-none font-body border border-gray-300 rounded w-full pt-[8px] pb-[9px] pl-[18px] mb-[24px] leading-[23px] text-[13px]">
+            <option value="option1">todo</option>
+            <option value="option2">in progress</option>
+            <option value="option3">done</option>
+          </select>
+
+          <!-- Custom dropdown arrow -->
+          <div class="pointer-events-none absolute inset-y-0 flex items-center text-medium-grey right-[16.78px] top-[18.55px] bottom-[15.6px] w-[9.4px] h-[4.7px] md:w-[14px] md:h-[8px]">
+            <svg class="" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+
+        </div> 
+
+      </form> 
+      </div>
+     </section>
   </body>
 </html>
