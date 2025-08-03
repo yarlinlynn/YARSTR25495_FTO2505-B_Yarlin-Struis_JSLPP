@@ -61,13 +61,13 @@ This project involves developing a **visually accurate and fully responsive Kanb
 ### JSL04 Challenge Key Objects:
 
 ##### Dynamic Task Display & Interaction
-- [ ] Dynamically generate task elements from the given initial data and insert them into the DOM.
-- [ ] Ensure tasks are placed in the correct columns ("To Do", "In Progress", "Done") based on their status.
-- [ ] Clicking a task should open a modal displaying its details.
+- [x] Dynamically generate task elements from the given initial data and insert them into the DOM.
+- [x] Ensure tasks are placed in the correct columns ("To Do", "In Progress", "Done") based on their status.
+- [x] Clicking a task should open a modal displaying its details.
 **The modal should include**:
-- [ ] Editable input fields for the task title and description.
-- [ ] A select dropdown showing the current status with other status options available.
-- [ ] A close button that allows users to exit the modal easily.
+- [x] Editable input fields for the task title and description.
+- [x] A select dropdown showing the current status with other status options available.
+- [x] A close button that allows users to exit the modal easily.
  
 
 ##### Design & Responsiveness
@@ -76,9 +76,9 @@ This project involves developing a **visually accurate and fully responsive Kanb
  
 
 ##### Code Structure & Maintainability
-- [ ] Structure JavaScript using modular, single-responsibility functions.
-- [ ] Use descriptive and meaningful variable and function names for clarity.
-- [ ] Add JSDoc comments to major functions, describing their purpose, parameters, and return values for better documentation.
+- [x] Structure JavaScript using modular, single-responsibility functions.
+- [x] Use descriptive and meaningful variable and function names for clarity.
+- [x] Add JSDoc comments to major functions, describing their purpose, parameters, and return values for better documentation.
 
 <br/>
 

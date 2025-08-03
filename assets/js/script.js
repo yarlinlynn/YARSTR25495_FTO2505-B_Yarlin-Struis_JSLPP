@@ -28,7 +28,7 @@ const statusSelect = document.getElementById("taskStatus");
 const closeModalButton = document.getElementById("close-btn");
 
 /**
- * Task counters
+ * Count of tasks in each column
  * @type {number}
  */
 let todoCount = 0;
