@@ -130,7 +130,8 @@
           <div class="flex items-center justify-between pb-4">
             <h2 class="text-[18px] font-bold leading-100%">Task</h2>
                 
-            <img id="close-btn" src="./assets/images/Group 45.svg" alt="close button">
+            <img id="close-btn" class="cursor-pointer"
+            src="./assets/images/Group 45.svg" alt="close button">
           </div>
 
           <form class="flex flex-col">
@@ -139,7 +140,7 @@
               Title
             </label>
             <input id="titleInput"
-            class="border border-gray-300 rounded h-[40px] w-full pt-[8px] pb-[9px] pl-[18px] mb-[24px]"
+            class="border border-gray-300 rounded h-[40px] w-full pt-[8px] pb-[9px] pl-[18px] mb-[24px] cursor-pointer"
             />
 
             <label for="taskDescription"
@@ -147,7 +148,7 @@
               Description
             </label>
             <textarea id="taskDescription"
-            class="h-[112px] border border-gray-300 rounded w-full pt-[8px] pb-[9px] pl-[18px] mb-[24px]"></textarea>
+            class="h-[112px] border border-gray-300 rounded w-full pt-[8px] pb-[9px] pl-[18px] mb-[24px] cursor-pointer"></textarea>
 
             <label for="taskStatus"
             class="pb-[8px] text-[12px] font-bold text-medium-grey">
@@ -156,14 +157,14 @@
             <!-- dropdown -->
              <div class="relative  mb-[24px]">
                 <select id="taskStatus" name="status" 
-                class="appearance-none font-body bg-white border border-gray-300 rounded w-full pt-[8px] pb-[9px] pl-[18px] mb-[24px] leading-[23px] text-[13px]">
+                class="appearance-none font-body bg-white border border-gray-300 rounded w-full pt-[8px] pb-[9px] pl-[18px] mb-[24px] leading-[23px] text-[13px] cursor-pointer">
                   <option value="todo">todo</option>
                   <option value="doing">in progress</option>
                   <option value="done">done</option>
                 </select>
 
                   <!-- Custom dropdown arrow -->
-                <div class="pointer-events-none absolute inset-y-0 flex items-center text-medium-grey right-[16.78px] top-[18.55px] bottom-[15.6px] w-[9.4px] h-[4.7px] md:w-[14px] md:h-[8px]">
+                <div class="pointer-events-none cursor-pointer absolute inset-y-0 flex items-center text-medium-grey right-[16.78px] top-[18.55px] bottom-[15.6px] w-[9.4px] h-[4.7px] md:w-[14px] md:h-[8px]">
                   <svg class="" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path d="M19 9l-7 7-7-7" />
                   </svg>
