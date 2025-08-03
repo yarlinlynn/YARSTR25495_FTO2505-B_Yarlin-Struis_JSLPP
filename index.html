@@ -120,7 +120,7 @@
     </div>
 
     <!-- Modal PopUp -->
-    <section id="modalPopUp" class=" absolute top-0 w-full "> 
+    <section id="modalPopUp" class=" absolute top-0 w-full hidden"> 
       <!-- backdrop for modal -->
       <div class="bg-black opacity-50 fixed top-0 left-0 w-full h-[130vh]"></div>
            
@@ -130,15 +130,15 @@
           <div class="flex items-center justify-between pb-4">
             <h2 class="text-[18px] font-bold leading-100%">Task</h2>
                 
-            <img src="./assets/images/Group 45.svg" alt="close button">
+            <img id="close-btn" src="./assets/images/Group 45.svg" alt="close button">
           </div>
 
           <form class="flex flex-col">
-            <label for="taskTitle"
+            <label for="titleInput"
             class="pb-[8px] text-[12px] font-bold text-medium-grey">
               Title
             </label>
-            <input id="taskTitle"
+            <input id="titleInput"
             class="border border-gray-300 rounded h-[40px] w-full pt-[8px] pb-[9px] pl-[18px] mb-[24px]"
             />
 
@@ -155,11 +155,11 @@
             </label>
             <!-- dropdown -->
              <div class="relative  mb-[24px]">
-                <select id="taskStatus" name="status"
-                class="appearance-none font-body border border-gray-300 rounded w-full pt-[8px] pb-[9px] pl-[18px] mb-[24px] leading-[23px] text-[13px]">
-                  <option value="option1">todo</option>
-                  <option value="option2">in progress</option>
-                  <option value="option3">done</option>
+                <select id="taskStatus" name="status" 
+                class="appearance-none font-body bg-white border border-gray-300 rounded w-full pt-[8px] pb-[9px] pl-[18px] mb-[24px] leading-[23px] text-[13px]">
+                  <option value="todo">todo</option>
+                  <option value="doing">in progress</option>
+                  <option value="done">done</option>
                 </select>
 
                   <!-- Custom dropdown arrow -->
