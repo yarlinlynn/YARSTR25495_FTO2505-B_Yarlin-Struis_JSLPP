@@ -1,3 +1,15 @@
+/* components.css */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* .MobileNav {
+  @apply absolute w-[340px] bg-white h-[200px] top-[65px] left-0 right-0 mx-auto rounded-[8px] pt-[16px] pb-[23px];
+} */
+
+/* @layer components {
+  .MobileNav {
+    @apply absolute w-[340px] bg-white h-[200px] top-[65px] left-0 right-0 mx-auto rounded-[8px] pt-[16px] pb-[23px];
+  }
+} */
