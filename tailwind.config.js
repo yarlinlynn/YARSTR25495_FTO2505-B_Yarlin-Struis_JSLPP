@@ -16,7 +16,7 @@ module.exports = {
   'pt-[20px]', 'px-[19px]', 'pb-[21px]', 'rounded-lg', 'text-rich-black', 'shadow-custom-shadow', 'cursor-pointer', 'focus:outline-none',
   'focus:ring-2', 'focus:ring-indigo', 'flex-row', 'w-[424px]', 'md:m-auto', 'md:flex', 'md:items-center', 'md:justify-center', 'md:flex-row',
   'gap-[15px]', 'py-[8px]', 'top-[99px]', 'lg:top-[249px]', 'right-0', 'm-auto', 'h-[415px]', 'md:h-[478px]', 'g-[24px]', 'justify-between',
-  'pb-4', 'h-[112px]', 'rounded-[20px]', 'w-[290px]', 'bg-[#A8A4FF]', 'w-[56px]', 'pt-2', 'pl-3', 'text-[20px]', 
+  'pb-4', 'h-[112px]', 'rounded-[20px]', 'w-[290px]', 'bg-[#A8A4FF]', 'w-[56px]', 'pt-2', 'pl-3', 'text-[20px]', "md-[43px]", "h-[65px]",
   "bg-[url('data:image/svg+xml;utf8,<svg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2211%22%20height=%228%22%20viewBox=%220%200%2011%208%22%20fill=%22none%22><path%20d=%22M0.79834%201.54863L5.49682%206.24711L10.1953%201.54863%22%20stroke=%22%23828FA3%22%20stroke-width=%222%22/></svg>')]"
 ],
   theme: {

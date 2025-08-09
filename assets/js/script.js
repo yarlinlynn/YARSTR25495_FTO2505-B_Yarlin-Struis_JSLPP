@@ -31,9 +31,21 @@ let inProgressCount = 0;
 let doneCount = 0;
 
 /**
+ * Save tasks to localStorage
+*/
+const savedTasks = JSON.parse(localStorage.getItem('myKey')) || [];
+if (savedTasks.length > 0) {
+  initialTasks.length = 0;
+  initialTasks.push(...savedTasks);
+}
+
+// Render all tasks to the DOM
+initialTasks.forEach(renderTasksToTheDom);
+
+/**
  * Render tasks to the DOM
 */
-initialTasks.forEach((task) => {
+function renderTasksToTheDom(task) {
   const listElement = document.createElement("li");
   listElement.className = "task mb-[21px] bg-white h-[65px] pt-[20px] px-[19px] pb-[21px] rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo";
   listElement.setAttribute("tabindex", "0");
@@ -56,14 +68,7 @@ initialTasks.forEach((task) => {
     doneCount++;
     doneHeading.textContent = `DONE (${doneCount})`;
   }
-});
-
-/**
- * Save tasks to localStorage
-*/
-localStorage.setItem('myKey', JSON.stringify(initialTasks));
-const retrievedData = JSON.parse(localStorage.getItem('myKey')) || [];
-initialTasks.push(...retrievedData);
+}
 
 /**
  * Render task modal popup
@@ -76,7 +81,7 @@ function renderTaskModal(task) {
       <div class="bg-black opacity-50 fixed top-0 left-0 w-full h-[130vh]"></div>
 
       <!-- Form Container -->
-      <div id="formContainer" class="bg-white absolute top-[99px] lg:top-[249px] left-0 right-0 m-auto w-[343px] md:w-[600px] p-[24px] rounded-[6px] h-[532px] md:h-[478px] flex flex-col g-[24px]">
+      <div id="formContainer" class="bg-white absolute top-[99px] lg:top-[242px] left-0 right-0 m-auto w-[343px] md:w-[600px] p-[24px] rounded-[6px] h-[410px] md:h-[415px] flex flex-col g-[24px]">
 
         <div class="flex items-center justify-between pb-4">
           <h2 class="text-[18px] font-bold leading-100%">Task</h2>
@@ -86,42 +91,25 @@ function renderTaskModal(task) {
 
         <!-- Form Container -->
          <form>
-          <!-- Task Title -->
-          <div class="relative">
-            <label for="title" class="mb-[8px] text-[12px] font-bold text-medium-grey">Title</label>
-            <input id="title" name="title" type="text" class="relative font-body border border-gray-300 rounded h-[40px] w-full pt-[8px] pb-[9px] pl-[18px] mb-[24px] text-[13px]"/>
-          </div>
+            <!-- Task Title -->
+            <label for="title" class="text-[12px] font-bold text-medium-grey">Title</label>
+            <input id="title" name="title" type="text" placeholder="e.g. Take chilled break" class="relative font-body border border-gray-300 rounded h-[40px] w-full pt-[8px] pb-[9px] pl-[18px] mb-[24px] mt-[8px] text-[13px]"/>
 
-          <!-- Task Description -->
-           <div>
-            <label for="description" class="mb-[8px] text-[12px] font-bold text-medium-grey">Description</label>
-            <textarea id="description" name="description" class="h-[112px] text-[13px] border border-gray-300 rounded w-full pt-[8px] pb-[9px] pl-[18px] pr-[18px] mb-[24px]">
-            </textarea>
-           </div>
+            <!-- Task Description -->
+            <label for="description" class="text-[12px] font-bold text-medium-grey">Description</label>
+            <textarea id="description" name="description" 
+              class="h-[112px] text-[13px] border border-gray-300 rounded w-full pt-[8px] pb-[9px] pl-[18px] pr-[18px] mb-[24px] mt-[8px]"></textarea>
 
-           <!-- Task Status -->
-           <div class="relative  mb-[24px]">
-
-            <select id="taskStatus" name="status" class="appearance-none font-body border border-gray-300 rounded w-full pt-[8px] pb-[9px] pl-[18px] mb-[24px] leading-[23px] text-[13px]">
-              <option value="todo">todo</option>
-              <option value="doing">in progress</option>
-              <option value="done">done</option>
-            </select>
-
-            
-            <div class="pointer-events-none absolute inset-y-0 flex items-center text-medium-grey right-[16.78px] top-[18.55px] bottom-[15.6px] w-[9.4px] h-[4.7px] md:w-[14px] md:h-[8px]">
-              <svg class="" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path d="M19 9l-7 7-7-7" />
-              </svg>
+            <!-- Task Status -->
+            <label for="taskStatus" class="mb-[8px] text-[12px] font-bold text-medium-grey">Status</label>
+            <div class="w-full border border-green-300 rounded flex items-center justify-between mb-[24px] mt-[8px]">
+              <select id="taskStatus" class="appearance-none font-body text-[13px] w-full pt-[8px] pb-[8px] pl-[18px] leading-[23px] pr-4 bg-[url('data:image/svg+xml;utf8,<svg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2211%22%20height=%228%22%20viewBox=%220%200%2011%208%22%20fill=%22none%22><path%20d=%22M0.79834%201.54863L5.49682%206.24711L10.1953%201.54863%22%20stroke=%22%23828FA3%22%20stroke-width=%222%22/></svg>')] bg-no-repeat bg-[length:0.8rem] bg-[right_0.75rem_center]
+            border border-gray-400 rounded px-3 py-2">
+                <option value="todo">todo</option>
+                <option value="doing">in progress</option>
+                <option value="done">done</option>
+              </select>
             </div>
-
-          </div> 
-
-          <!-- Form Buttons -->
-          <div class="flex flex-col gap-[15px] md:flex-row">
-            <button class="w-[300px] h-[40px] rounded-[20px] bg-indigo text-white font-bold text-[13px] leading-[23px]">Save Changes</button>
-            <buttton class="w-[300px] h-[40px] rounded-[20px] bg-red text-white font-bold text-[13px] leading-[23px] text-center pt-[8px]">Delete Task</buttton>
-          </div>
 
          </form>
          
@@ -132,12 +120,10 @@ function renderTaskModal(task) {
   // Append modal to body
   document.body.appendChild(modalWrapper);
 
-  // Query modal inputs AFTER it's been added to DOM
   const titleInput = modalWrapper.querySelector("#title");
   const taskDescription = modalWrapper.querySelector("#description");
   const statusSelect = modalWrapper.querySelector("#taskStatus");
 
-  // Set their values based on the clicked task
   titleInput.value = task.title;
   taskDescription.value = task.description;
   statusSelect.value = task.status;
@@ -216,8 +202,7 @@ document.querySelectorAll("#newTaskButton").forEach(btn => {
     <!-- Backdrop -->
       <div class="bg-black opacity-50 fixed top-0 left-0 w-full h-[130vh]"></div>
 
-      <!-- Form Container -->
-       <div id="formContainer" class="bg-white absolute top-[99px] lg:top-[249px] left-0 right-0 m-auto w-[343px] md:w-[600px] p-[24px] rounded-[6px] h-[479px] flex flex-col g-[24px]">
+      <div id="formContainer" class="bg-white absolute top-[99px] lg:top-[267px] left-0 right-0 m-auto w-[343px] md:w-[600px] p-[24px] rounded-[6px] h-[479px] md:h-[479px] flex flex-col g-[24px]">
 
         <div class="flex items-center justify-between pb-4">
           <h2 class="text-[18px] font-bold leading-100%">New Task</h2>
@@ -226,49 +211,48 @@ document.querySelectorAll("#newTaskButton").forEach(btn => {
         </div>
 
         <!-- Form Container -->
-         <form>
-          <!-- Task Title -->
-           <div class="relative">
-            <label for="newTitle" class="mb-[8px] text-[12px] font-bold text-medium-grey">Title</label>
-            <input id="newTitle" name="title" type="text" placeholder="e.g. Take chilled break"
-              class="relative font-body border border-gray-300 rounded h-[40px] w-full pt-[8px] pb-[9px] pl-[18px] mb-[24px] text-[13px]"
-            />
-            <!-- Error Message -->
-            <p id="errorMessage" class="hidden absolute w-[180px] h-[48px] bg-white text-medium-grey rounded-[8px] right-[25px] left-[128px] top-[55px] shadow-custom-shadow pt-[12px] text-[13px] text-center">❗ Please fill out this field.</p>
-           </div>
+       <form>
+        <!-- Task Title -->
+        <label for="newTitle" class="text-[12px] font-bold text-medium-grey">Title</label>
+        <div class="mt-[8px] relative">
+          <input id="newTitle" name="title" type="text" placeholder="e.g. Take chilled break" class="relative font-body border border-gray-300 rounded h-[40px] w-full pt-[8px] pb-[9px] pl-[18px] mb-[24px]  text-[13px]"/>
+          <!-- Error Message -->
+          <p id="errorMessage" class="hidden absolute w-[180px] h-[48px] bg-white text-medium-grey rounded-[8px] right-[25px] left-[128px] top-[55px] shadow-custom-shadow pt-[12px] text-[13px] text-center">❗ Please fill out this field.</p>
+        </div>
 
-          <!-- Task Description -->
-           <div>
-            <label for="description" class="mb-[8px] text-[12px] font-bold text-medium-grey">Description</label>
-            <input id="description" name="description" class="h-[112px] text-[13px] border border-gray-300 rounded w-full pt-[8px] pb-[9px] pl-[18px] pr-[18px] mb-[24px]">
-            </input>
-           </div>
+        <!-- Task Description -->
+        <label for="newDescription" class="text-[12px] font-bold text-medium-grey">Description</label>
+        <textarea id="newDescription" name="description" 
+          class="h-[112px] text-[13px] border border-gray-300 rounded w-full pt-[8px] pb-[9px] pl-[18px] pr-[18px] mb-[24px] mt-[8px]"></textarea>
 
-          <!-- Task Status -->
-          <div class="relative  mb-[24px]">
-            <label for="newTaskStatus" class="mb-[8px] text-[12px] font-bold text-medium-grey">Status</label>
-            <select id="newTaskStatus" name="status" class=" font-body border border-gray-300 rounded w-full pt-[8px] pb-[9px] pl-[18px] mb-[24px] leading-[23px] text-[13px]">
-              <option value="todo">todo</option>
-              <option value="doing">in progress</option>
-              <option value="done">done</option>
-            </select>
+        <!-- Task Status -->
+        <label for="newTaskStatus" class="mb-[8px] text-[12px] font-bold text-medium-grey">Status</label>
+        <div class="w-full border border-green-300 rounded flex items-center justify-between mb-[24px] mt-[8px]">
+          <select id="newTaskStatus" class="appearance-none font-body text-[13px] w-full pt-[8px] pb-[8px] pl-[18px] leading-[23px] pr-4 bg-[url('data:image/svg+xml;utf8,<svg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2211%22%20height=%228%22%20viewBox=%220%200%2011%208%22%20fill=%22none%22><path%20d=%22M0.79834%201.54863L5.49682%206.24711L10.1953%201.54863%22%20stroke=%22%23828FA3%22%20stroke-width=%222%22/></svg>')] bg-no-repeat bg-[length:0.8rem] bg-[right_0.75rem_center]
+         border border-gray-400 rounded px-3 py-2">
+            <option value="todo">todo</option>
+            <option value="doing">in progress</option>
+            <option value="done">done</option>
+          </select>
+        </div>
 
-          </div> 
+        <!-- Form Buttons -->
+        <button id="createNewTask" class="w-[290px] h-[40px] rounded-[20px] bg-[#635FC7] text-white font-bold text-[13px] leading-[23px] md:w-[424px] md:m-auto md:flex md:items-center md:justify-center">Create Task</button>
+        
+       </form>
 
-          <!-- Submit Task Button -->
-           <button id="createNewTask" type="submit" class="w-[290px] h-[40px] rounded-[20px] bg-[#635FC7] text-white font-bold text-[13px] leading-[23px] md:w-[424px] md:m-auto md:flex md:items-center md:justify-center">Create Task</button>
-         
-        </form>
-         
-
-       </div>
+      </div>
   `;
 
   document.body.appendChild(modalPopUp);
 
+
+
   // Add event listener for the submit button to call the getTaskDetails function
-  document.getElementById("createNewTask").addEventListener("click", function() {
+  document.getElementById("createNewTask").addEventListener("click", function(e) {
+    e.preventDefault(); //Prevent default form submit + add task
     getNewTaskDetails();
+    modalPopUp.remove(); 
   });
   
 
@@ -295,28 +279,21 @@ function getNewTaskDetails() {
 
   let errorMessage = document.getElementById("errorMessage")
 
-  // alert user if task title is empty before creating new task
   if (title === "") {
     errorMessage.classList.remove("hidden");
     return;
   } 
 
-  title = title.charAt(0).toUpperCase() + title.slice(1).toLowerCase();
-  
-  // push task to our array
-  const newTask = {
-    id,
-    title,
-    description,
-    status
-  }
+  title = title.charAt(0).toUpperCase() + title.slice(1);
+
+  const newTask = { id, title, description, status };
   initialTasks.push(newTask);
 
-  renderTask(newTask);
-  // save new tasks to local storage
-  // localStorage.setItem("tasks", JSON.stringify(initialTasks));
+  renderTasksToTheDom(newTask);
+  // save new tasks to local storage that persists on page load
   localStorage.setItem('myKey', JSON.stringify(initialTasks));
-  console.log("Task added:", initialTasks);
+  // logs all tasks in initialTask
+  console.log("Tasks", initialTasks);
 }
 
 /**
