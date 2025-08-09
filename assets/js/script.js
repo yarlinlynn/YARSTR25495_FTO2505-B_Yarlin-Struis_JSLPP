@@ -250,12 +250,15 @@ document.querySelectorAll("#newTaskButton").forEach(btn => {
 
   // Add event listener for the submit button to call the getTaskDetails function
   document.getElementById("createNewTask").addEventListener("click", function(e) {
-    e.preventDefault(); //Prevent default form submit + add task
-    getNewTaskDetails();
-    modalPopUp.remove(); 
+    e.preventDefault(); // Prevent default form submit
+
+    const taskCreated = getNewTaskDetails(); 
+    // check if title is entered from user
+    if (taskCreated) { // Only close if a task was added
+      modalPopUp.remove();
+    }
   });
   
-
   // Removes the whole dynamic content when clicked
     const closeButton = modalPopUp.querySelector("#closeButton");
     closeButton.addEventListener("click", function () {
@@ -279,10 +282,15 @@ function getNewTaskDetails() {
 
   let errorMessage = document.getElementById("errorMessage")
 
+  // if string is empty show error message
   if (title === "") {
-    errorMessage.classList.remove("hidden");
-    return;
-  } 
+    errorMessage.style.display = "block"; 
+    // errorMessage.classList.remove("hidden");
+    return false;
+  } else {
+    // errorMessage.classList.add("hidden");
+    errorMessage.style.display = "none";
+  }
 
   title = title.charAt(0).toUpperCase() + title.slice(1);
 
@@ -294,6 +302,7 @@ function getNewTaskDetails() {
   localStorage.setItem('myKey', JSON.stringify(initialTasks));
   // logs all tasks in initialTask
   console.log("Tasks", initialTasks);
+  return true;
 }
 
 /**

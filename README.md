@@ -4,7 +4,7 @@ A sleek, responsive Kanban board built with **Tailwind CSS** and semantic HTML. 
 
 ## 📸 Screenshots
 
-![Figma Design for Challenge 4](<assets/design /JSL04 challenge.png>)
+![Figma Design for Challenge 5](<assets/design /JSL05 challenge.png>)
 
 
 This project involves developing a **visually accurate and fully responsive Kanban board** that aligns with the provided **Figma design**. The board should be structured into multiple columns and include task cards, a static side panel, and a well-defined theme to ensure a **professional and polished user experience.**
@@ -82,6 +82,34 @@ This project involves developing a **visually accurate and fully responsive Kanb
 
 <br/>
 
+### JSL05 Challenge Key Objects:
+
+##### Persistent Task Storage & Retrieval
+- [x] Save tasks to local storage: On page load, the application should load tasks from local storage so that the latest task list is available, even after a refresh.
+- [x] Ensure that tasks are saved in local storage every time a new task is added so that tasks persist after the page refreshes.
+- [x] Load tasks from local storage on startup, so users can see the latest tasks without manually re-entering them.
+- [x] Tasks should be categorized correctly into their respective columns (e.g., "To Do", "Doing", "Done") based on their status when loaded from local storage.
+
+##### Task Creation & Modal Interaction
+- [x] Provide an "Add Task" button that, when clicked, opens a modal for creating a new task.
+The modal should include:
+- [x] Fields for entering the task title and description.
+- [x] A dropdown to select the task status ("To Do", "Doing", "Done").
+- [x] A submit button to add the new task to the task board immediately.
+- [x] After submitting, the task should appear on the board without requiring a page refresh.
+
+##### Design & Responsiveness
+- [x] The "Add New Task" modal should match the Figma design, including mobile-responsive behavior.
+- [x] Ensure that the modal and task board are fully responsive and function properly on both desktop and mobile devices.
+- [x] The "Add Task" button should transform appropriately on mobile devices to match the Figma design.
+
+##### Code Structure & Maintainability
+- [x] Modularize your JavaScript code: Break your code into separate modules, each handling a single responsibility (e.g., local storage handling, task rendering, modal management).
+- [x] Use descriptive variable and function names to ensure the code is clear and easy to maintain.
+- [x] Include JSDoc comments for every major function and module to describe their functionality, parameters, and return values.
+
+<br/>
+
 ### Setup Instructions
 
 To run the project locally:
@@ -130,4 +158,4 @@ This project is for educational use only.
 <br/>
 
 ### Credits
-Design provided by **CodeSpace** via Figma; [https://www.figma.com/design/y7bFCUYL5ZHfPeojACBXg2/Challenge-1-%7C-JSL?node-id=0-1&t=yngAIXXKnJfH7Jj3-1](https://www.figma.com/design/y7bFCUYL5ZHfPeojACBXg2/Challenges-%7C-JSL?node-id=6033-10647&t=8uFG8HuyuOHVKluu-0)
+Design provided by **CodeSpace** via [Figma Reference File](https://www.figma.com/design/y7bFCUYL5ZHfPeojACBXg2/Challenges-%7C-JSL?node-id=6033-11092&t=XbQhBWPYxXDAqp3x-1)
