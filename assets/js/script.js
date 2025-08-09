@@ -1,40 +1,41 @@
 
 import { initialTasks } from "../js/initialData.js";
 
-// DECLARING VARIABLES AND GRABING ELEMENTS:
-
 /**
- * Get task column containers
+ * GET DOM ELEMENTS
  * @type {HTMLElement}
- */
+*/
+
+// Get task column containers
+
 const todoColumn = document.getElementById("todoColumn");
 const inProgressColumn = document.getElementById("inProgressColumn");
 const doneColumn = document.getElementById("doneColumn");
 
-/**
- * Task heading elements
- * @type {HTMLElement}
- */ 
+// Task heading elements
+
 const todoHeading = document.getElementById("todo-heading");
 const inProgressHeading = document.getElementById("doing-heading");
 const doneHeading = document.getElementById("done-heading");
 
-/**
- * Count of tasks in each column
- * @type {number}
- */
+// Hide & show elements
+
+const sidebar = document.querySelector(".sidebar");
+const showSidebarBtn = document.getElementById("showSidebarBtn");
+const hideSidebarBtn = document.getElementById("hideSidebarBtn");
+
+// Count of tasks in each column
+
 let todoCount = 0;
 let inProgressCount = 0;
 let doneCount = 0;
 
 /**
- * loop through each task and create il element for each column
- * and attach addEventListener to open the modal
- */
-// 
+ * Render tasks to the DOM
+*/
 initialTasks.forEach((task) => {
   const listElement = document.createElement("li");
-  listElement.className = "task mb-[21px] bg-white h-[60px] pt-[20px] px-[19px] pb-[21px] rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo";
+  listElement.className = "task mb-[21px] bg-white h-[65px] pt-[20px] px-[19px] pb-[21px] rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo";
   listElement.setAttribute("tabindex", "0");
   listElement.textContent = task.title;
 
@@ -58,11 +59,15 @@ initialTasks.forEach((task) => {
 });
 
 /**
- * Renders and opens modal and populates the fields with task data
- * @typedef {Object} Task
- * @param {Task} task - The task object to display
- */
+ * Save tasks to localStorage
+*/
+localStorage.setItem('myKey', JSON.stringify(initialTasks));
+const retrievedData = JSON.parse(localStorage.getItem('myKey')) || [];
+initialTasks.push(...retrievedData);
 
+/**
+ * Render task modal popup
+*/
 function renderTaskModal(task) {
   const modalWrapper = document.createElement("section");
   modalWrapper.classList.add("fixed", "top-0", "left-0", "w-full", "h-full", "z-50");
@@ -90,7 +95,7 @@ function renderTaskModal(task) {
           <!-- Task Description -->
            <div>
             <label for="description" class="mb-[8px] text-[12px] font-bold text-medium-grey">Description</label>
-            <textarea id="description" name="description" class="h-[112px] text-[13px] border border-gray-300 rounded w-full pt-[8px] pb-[9px] pl-[18px] mb-[24px]">
+            <textarea id="description" name="description" class="h-[112px] text-[13px] border border-gray-300 rounded w-full pt-[8px] pb-[9px] pl-[18px] pr-[18px] mb-[24px]">
             </textarea>
            </div>
 
@@ -144,13 +149,8 @@ function renderTaskModal(task) {
   });
 }
 
-// Update headings with counts
-todoHeading.textContent = `TODO (${todoCount})`;
-inProgressHeading.textContent = `IN PROGRESS (${inProgressCount})`;
-doneHeading.textContent = `DONE (${doneCount})`;
-
 /**
- * Add mobile navigation to the DOM
+ * Render mobile navigation to the DOM
 */
 document.getElementById("toggleMobileNav").addEventListener("click", function() {
   // Create a new element
@@ -194,7 +194,7 @@ document.getElementById("toggleMobileNav").addEventListener("click", function() 
   // Append the new div to the container
     document.body.appendChild(navContainer);
 
-    // Removes the whole dynamic content when clicked
+    // Removes the modal when clicked
     const closeButton = navContainer.querySelector("#closeButton");
     closeButton.addEventListener("click", function () {
       navContainer.remove(); 
@@ -203,9 +203,8 @@ document.getElementById("toggleMobileNav").addEventListener("click", function() 
 });
 
 /**
- * Add New Task Modal Popup Dynamatically to the DOM
+ * Render new task modal popup
 */
-
 document.querySelectorAll("#newTaskButton").forEach(btn => {
   btn.addEventListener("click", function () {
 
@@ -240,27 +239,19 @@ document.querySelectorAll("#newTaskButton").forEach(btn => {
 
           <!-- Task Description -->
            <div>
-            <label for="newDescription" class="mb-[8px] text-[12px] font-bold text-medium-grey">Description</label>
-            <textarea id="newDescription" name="description" placeholder="e.g Pet your dog, have a cup of coffee, dance to your favourite song and come back to crush this challenge."
-              class="h-[112px] text-[13px] border border-gray-300 rounded w-full py-[8px] pb-[9px] px-[18px] mb-[24px]">
-            </textarea>
+            <label for="description" class="mb-[8px] text-[12px] font-bold text-medium-grey">Description</label>
+            <input id="description" name="description" class="h-[112px] text-[13px] border border-gray-300 rounded w-full pt-[8px] pb-[9px] pl-[18px] pr-[18px] mb-[24px]">
+            </input>
            </div>
 
           <!-- Task Status -->
           <div class="relative  mb-[24px]">
-
-            <select id="newTaskStatus" name="status" class="appearance-none font-body border border-gray-300 rounded w-full pt-[8px] pb-[9px] pl-[18px] mb-[24px] leading-[23px] text-[13px]">
+            <label for="newTaskStatus" class="mb-[8px] text-[12px] font-bold text-medium-grey">Status</label>
+            <select id="newTaskStatus" name="status" class=" font-body border border-gray-300 rounded w-full pt-[8px] pb-[9px] pl-[18px] mb-[24px] leading-[23px] text-[13px]">
               <option value="todo">todo</option>
               <option value="doing">in progress</option>
               <option value="done">done</option>
             </select>
-
-            
-            <div class="pointer-events-none absolute inset-y-0 flex items-center text-medium-grey right-[16.78px] top-[18.55px] bottom-[15.6px] w-[9.4px] h-[4.7px] md:w-[14px] md:h-[8px]">
-              <svg class="" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path d="M19 9l-7 7-7-7" />
-              </svg>
-            </div>
 
           </div> 
 
@@ -275,8 +266,11 @@ document.querySelectorAll("#newTaskButton").forEach(btn => {
 
   document.body.appendChild(modalPopUp);
 
-  const form = modalPopUp.querySelector("form");
-  form.addEventListener("submit", getNewTaskDetails);
+  // Add event listener for the submit button to call the getTaskDetails function
+  document.getElementById("createNewTask").addEventListener("click", function() {
+    getNewTaskDetails();
+  });
+  
 
   // Removes the whole dynamic content when clicked
     const closeButton = modalPopUp.querySelector("#closeButton");
@@ -287,9 +281,8 @@ document.querySelectorAll("#newTaskButton").forEach(btn => {
 });
 
 /**
- * Get the user info from the new task model
+ * Get new task details
 */
-
 function getNewTaskDetails() {
 
   // calculate the id of task entered by user and have it start at the last id from array
@@ -305,21 +298,43 @@ function getNewTaskDetails() {
   // alert user if task title is empty before creating new task
   if (title === "") {
     errorMessage.classList.remove("hidden");
-  } else {
-    errorMessage.classList.add("hidden")
-  }
+    return;
+  } 
 
-  // format title
   title = title.charAt(0).toUpperCase() + title.slice(1).toLowerCase();
+  
   // push task to our array
-
   const newTask = {
     id,
     title,
     description,
     status
   }
+  initialTasks.push(newTask);
 
-  console.log(newTask)
-
+  renderTask(newTask);
+  // save new tasks to local storage
+  // localStorage.setItem("tasks", JSON.stringify(initialTasks));
+  localStorage.setItem('myKey', JSON.stringify(initialTasks));
+  console.log("Task added:", initialTasks);
 }
+
+/**
+ * Add and remove sidebar on click
+*/
+
+hideSidebarBtn.addEventListener("click", () => {
+  if (sidebar.style.display === "none") {
+    sidebar.style.display = ""; 
+  } else {
+    sidebar.style.display = "none";
+  }
+  showSidebarBtn.style.display = "block"
+});
+
+showSidebarBtn.addEventListener("click", () => {
+  if (sidebar.style.display === "none") {
+    sidebar.style.display = "block";
+  }
+  showSidebarBtn.style.display = "none"
+})
