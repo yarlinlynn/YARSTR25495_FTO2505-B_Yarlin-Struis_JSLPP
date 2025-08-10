@@ -44,6 +44,8 @@ initialTasks.forEach(renderTasksToTheDom);
 
 /**
  * Render tasks to the DOM
+ * @typedef {Object} Task
+ * @param {Task} task - The task object to display
 */
 function renderTasksToTheDom(task) {
   const listElement = document.createElement("li");
@@ -72,6 +74,8 @@ function renderTasksToTheDom(task) {
 
 /**
  * Render task modal popup
+ * @typedef {Object} Task
+ * @param {Task} task - The task object to display
 */
 function renderTaskModal(task) {
   const modalWrapper = document.createElement("section");
@@ -217,7 +221,7 @@ document.querySelectorAll("#newTaskButton").forEach(btn => {
         <div class="mt-[8px] relative">
           <input id="newTitle" name="title" type="text" placeholder="e.g. Take chilled break" class="relative font-body border border-gray-300 rounded h-[40px] w-full pt-[8px] pb-[9px] pl-[18px] mb-[24px]  text-[13px]"/>
           <!-- Error Message -->
-          <p id="errorMessage" class="hidden absolute w-[180px] h-[48px] bg-white text-medium-grey rounded-[8px] right-[25px] left-[128px] top-[55px] shadow-custom-shadow pt-[12px] text-[13px] text-center">❗ Please fill out this field.</p>
+          <p id="errorMessage" class="hidden absolute z-50 w-[180px] h-[48px] bg-white text-medium-grey rounded-[8px] right-[25px] left-[128px] top-[55px] shadow-custom-shadow pt-[12px] text-[13px] text-center">❗ Please fill out this field.</p>
         </div>
 
         <!-- Task Description -->
@@ -245,8 +249,6 @@ document.querySelectorAll("#newTaskButton").forEach(btn => {
   `;
 
   document.body.appendChild(modalPopUp);
-
-
 
   // Add event listener for the submit button to call the getTaskDetails function
   document.getElementById("createNewTask").addEventListener("click", function(e) {
@@ -276,39 +278,48 @@ function getNewTaskDetails() {
   let id = initialTasks[initialTasks.length - 1 ].id + 1
 
   // get user title, description and status entered
-  let title = document.getElementById("newTitle").value.trim()
-  let description = document.getElementById("newDescription").value.trim()
-  let status = document.getElementById("newTaskStatus").value
+  let title = document.getElementById("newTitle").value;
+  let description = document.getElementById("newDescription").value.trim();
+  let status = document.getElementById("newTaskStatus").value;
 
-  let errorMessage = document.getElementById("errorMessage")
+  let errorMessage = document.getElementById("errorMessage");
 
-  // if string is empty show error message
-  if (title === "") {
-    errorMessage.style.display = "block"; 
-    // errorMessage.classList.remove("hidden");
-    return false;
+  if (title === null || title === undefined || title.trim().length === 0) {
+
+    // Focus the input so user knows where to type
+    document.getElementById("newTitle").focus();
+
+    errorMessage.style.display = "block";
+    return false; 
   } else {
-    // errorMessage.classList.add("hidden");
-    errorMessage.style.display = "none";
+    errorMessage.style.display = "none";   
   }
 
+  // Capitalize first letter of title
   title = title.charAt(0).toUpperCase() + title.slice(1);
 
-  const newTask = { id, title, description, status };
+  // Create new task
+  const newTask = { 
+    id, 
+    title, 
+    description, 
+    status 
+  };
+  
+  // Push new task to the array
   initialTasks.push(newTask);
-
   renderTasksToTheDom(newTask);
-  // save new tasks to local storage that persists on page load
+
+ // Save new tasks to local storage that persists on page load
   localStorage.setItem('myKey', JSON.stringify(initialTasks));
-  // logs all tasks in initialTask
-  console.log("Tasks", initialTasks);
+
+  console.log(initialTasks);
   return true;
 }
 
 /**
  * Add and remove sidebar on click
 */
-
 hideSidebarBtn.addEventListener("click", () => {
   if (sidebar.style.display === "none") {
     sidebar.style.display = ""; 
@@ -322,5 +333,5 @@ showSidebarBtn.addEventListener("click", () => {
   if (sidebar.style.display === "none") {
     sidebar.style.display = "block";
   }
-  showSidebarBtn.style.display = "none"
-})
+  showSidebarBtn.style.display = "none";
+});
