@@ -24,6 +24,10 @@ const sidebar = document.querySelector(".sidebar");
 const showSidebarBtn = document.getElementById("showSidebarBtn");
 const hideSidebarBtn = document.getElementById("hideSidebarBtn");
 
+// Toggle Light and Dark Switch
+const toggleTheme = document.querySelectorAll("#toggleTheme");
+const toggleSwitch = document.querySelectorAll("#toggleSwitch");
+
 // Count of tasks in each column
 
 let todoCount = 0;
@@ -49,7 +53,7 @@ initialTasks.forEach(renderTasksToTheDom);
 */
 function renderTasksToTheDom(task) {
   const listElement = document.createElement("li");
-  listElement.className = "task mb-[21px] bg-white h-[65px] pt-[20px] px-[19px] pb-[21px] rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo";
+  listElement.className = "task mb-[21px] bg-white h-[65px] pt-[20px] px-[19px] pb-[21px] rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo dark:bg-dark-grey dark:text-white";
   listElement.setAttribute("tabindex", "0");
   listElement.textContent = task.title;
 
@@ -85,10 +89,10 @@ function renderTaskModal(task) {
       <div class="bg-black opacity-50 fixed top-0 left-0 w-full h-[130vh]"></div>
 
       <!-- Form Container -->
-      <div id="formContainer" class="bg-white absolute top-[99px] lg:top-[242px] left-0 right-0 m-auto w-[343px] md:w-[600px] p-[24px] rounded-[6px] h-[410px] md:h-[415px] flex flex-col g-[24px]">
+      <div id="formContainer" class="bg-white dark:bg-dark-grey absolute top-[99px] lg:top-[242px] left-0 right-0 m-auto w-[343px] md:w-[600px] p-[24px] rounded-[6px] h-[410px] md:h-[415px] flex flex-col g-[24px]">
 
         <div class="flex items-center justify-between pb-4">
-          <h2 class="text-[18px] font-bold leading-100%">Task</h2>
+          <h2 class="text-[18px] dark:text-white font-bold leading-100%">Task</h2>
                   
           <img src="./assets/images/Group 45.svg" id="closeModalBtn" alt="close button">
         </div>
@@ -97,18 +101,18 @@ function renderTaskModal(task) {
          <form>
             <!-- Task Title -->
             <label for="title" class="text-[12px] font-bold text-medium-grey">Title</label>
-            <input id="title" name="title" type="text" placeholder="e.g. Take chilled break" class="relative font-body border border-gray-300 rounded h-[40px] w-full pt-[8px] pb-[9px] pl-[18px] mb-[24px] mt-[8px] text-[13px]"/>
+            <input id="title" name="title" type="text" placeholder="e.g. Take chilled break" class="relative dark:text-black font-body border border-gray-300 rounded h-[40px] w-full pt-[8px] pb-[9px] pl-[18px] mb-[24px] mt-[8px] text-[13px]"/>
 
             <!-- Task Description -->
             <label for="description" class="text-[12px] font-bold text-medium-grey">Description</label>
             <textarea id="description" name="description" 
-              class="h-[112px] text-[13px] border border-gray-300 rounded w-full pt-[8px] pb-[9px] pl-[18px] pr-[18px] mb-[24px] mt-[8px]"></textarea>
+              class="h-[112px] text-[13px] border border-gray-300 rounded w-full pt-[8px] pb-[9px] pl-[18px] pr-[18px] mb-[24px] mt-[8px] dark:text-black"></textarea>
 
             <!-- Task Status -->
             <label for="taskStatus" class="mb-[8px] text-[12px] font-bold text-medium-grey">Status</label>
             <div class="w-full border border-green-300 rounded flex items-center justify-between mb-[24px] mt-[8px]">
               <select id="taskStatus" class="appearance-none font-body text-[13px] w-full pt-[8px] pb-[8px] pl-[18px] leading-[23px] pr-4 bg-[url('data:image/svg+xml;utf8,<svg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2211%22%20height=%228%22%20viewBox=%220%200%2011%208%22%20fill=%22none%22><path%20d=%22M0.79834%201.54863L5.49682%206.24711L10.1953%201.54863%22%20stroke=%22%23828FA3%22%20stroke-width=%222%22/></svg>')] bg-no-repeat bg-[length:0.8rem] bg-[right_0.75rem_center]
-            border border-gray-400 rounded px-3 py-2">
+            border border-gray-400 rounded px-3 py-2 dark:text-black">
                 <option value="todo">todo</option>
                 <option value="doing">in progress</option>
                 <option value="done">done</option>
@@ -162,22 +166,22 @@ document.getElementById("toggleMobileNav").addEventListener("click", function() 
           Launch Career
         </button>
        
-        <!-- Light and Dark Toggle Button -->
-        <div class="bg-[#F4F7FD] w-[260px] h-[48px] rounded-[6px] relative left-0 right-0 mx-auto pt-[10px] pb-[17px] text-center flex items-center justify-center gap-4">
+        <div class="bg-[#F4F7FD] dark:bg-indigo w-[260px] h-[48px] rounded-[6px] relative left-0 right-0 mx-auto pt-[10px] pb-[17px] text-center flex items-center justify-center gap-4">
     
-          <!-- Sun Icon -->
-          <span class="text-xl">☀️</span>
+          <div class="relative flex items-center justify-center 
+            before:content-['☀️'] before:absolute before:-left-6 before:text-xl 
+            after:content-['🌑'] after:absolute after:-right-6 after:text-xl">
 
-          <!-- Toggle Switch -->
-          <button id="themeToggle"
-            class="w-[40px] h-[20px] bg-[#635FC7] rounded-[12px] flex items-center px-1 transition-all duration-300 relative"
-            aria-label="Toggle Theme">
-            <span id="toggleCircle"
-              class="w-[14px] h-[14px] bg-white rounded-full transform transition-all duration-300"></span>
-          </button>
+            <!-- Hidden Checkbox -->
+            <input type="checkbox" id="mobileToggleBtn" class="absolute invisible peer" />
 
-          <!-- Moon Icon -->
-          <span class="text-xl">🌑</span>
+            <label for="mobileToggleBtn"
+              class=" block w-[40px] h-[20px] rounded-full bg-[#635FC7] cursor-pointer relative peer-checked:bg-[#635FC7] mx-[10px] dark:bg-very-dark-grey peer-checked:dark:bg-very-dark-grey
+              after:content-[''] after:w-[14px] after:h-[14px] after:bg-white after:absolute after:rounded-full after:top-[3px] after:left-[4px] after:transition-[left] after:duration-300
+              peer-checked:after:left-[20px]">
+            </label>
+
+          </div>
         </div>
       </div>
     `;
@@ -206,10 +210,10 @@ document.querySelectorAll("#newTaskButton").forEach(btn => {
     <!-- Backdrop -->
       <div class="bg-black opacity-50 fixed top-0 left-0 w-full h-[130vh]"></div>
 
-      <div id="formContainer" class="bg-white absolute top-[99px] lg:top-[267px] left-0 right-0 m-auto w-[343px] md:w-[600px] p-[24px] rounded-[6px] h-[479px] md:h-[479px] flex flex-col g-[24px]">
+      <div id="formContainer" class="bg-white dark:bg-dark-grey absolute top-[99px] lg:top-[267px] left-0 right-0 m-auto w-[343px] md:w-[600px] p-[24px] rounded-[6px] h-[479px] md:h-[479px] flex flex-col g-[24px]">
 
         <div class="flex items-center justify-between pb-4">
-          <h2 class="text-[18px] font-bold leading-100%">New Task</h2>
+          <h2 class="text-[18px] dark:text-white font-bold leading-100%">New Task</h2>
                   
           <img src="./assets/images/Group 45.svg" id="closeButton" alt="close button">
         </div>
@@ -232,7 +236,7 @@ document.querySelectorAll("#newTaskButton").forEach(btn => {
         <!-- Task Status -->
         <label for="newTaskStatus" class="mb-[8px] text-[12px] font-bold text-medium-grey">Status</label>
         <div class="w-full border border-green-300 rounded flex items-center justify-between mb-[24px] mt-[8px]">
-          <select id="newTaskStatus" class="appearance-none font-body text-[13px] w-full pt-[8px] pb-[8px] pl-[18px] leading-[23px] pr-4 bg-[url('data:image/svg+xml;utf8,<svg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2211%22%20height=%228%22%20viewBox=%220%200%2011%208%22%20fill=%22none%22><path%20d=%22M0.79834%201.54863L5.49682%206.24711L10.1953%201.54863%22%20stroke=%22%23828FA3%22%20stroke-width=%222%22/></svg>')] bg-no-repeat bg-[length:0.8rem] bg-[right_0.75rem_center]
+          <select id="newTaskStatus" class="appearance-none font-body text-[13px] dark:text-black w-full pt-[8px] pb-[8px] pl-[18px] leading-[23px] pr-4 bg-[url('data:image/svg+xml;utf8,<svg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2211%22%20height=%228%22%20viewBox=%220%200%2011%208%22%20fill=%22none%22><path%20d=%22M0.79834%201.54863L5.49682%206.24711L10.1953%201.54863%22%20stroke=%22%23828FA3%22%20stroke-width=%222%22/></svg>')] bg-no-repeat bg-[length:0.8rem] bg-[right_0.75rem_center]
          border border-gray-400 rounded px-3 py-2">
             <option value="todo">todo</option>
             <option value="doing">in progress</option>
@@ -335,3 +339,19 @@ showSidebarBtn.addEventListener("click", () => {
   }
   showSidebarBtn.style.display = "none";
 });
+
+/**
+ * Dark and Light Theme Switch Button
+ */
+document.querySelectorAll("#toggleTheme").forEach( btn => {
+  btn.add
+})
+
+toggleTheme.forEach( btn => {
+  btn.addEventListener("click", () => {
+    // grab the dark colors from config file
+
+    // move switch button
+    
+  })
+})

@@ -40,10 +40,10 @@
         <script src="/assets/js/script.js" type="module" defer></script>
 </head>
 
-  <body class="font-body text-[15px] md:flex md:justify-between min-h-screen">
+  <body class="font-body text-[15px] md:flex md:justify-between min-h-screen dark:text-white">
 
     <!-- Navigation Sidebar: Contains the logo, navigation links for boards, and theme toggle. -->
-    <nav role="navigation" class="sidebar h-[64px] pt-[20px] pb-[19px] md:max-w-[300px]  md:pt-0 sm: flex sm:items-center sm:justify-between md:block md:h-full">
+    <nav role="navigation" class="sidebar h-[64px] pt-[20px] pb-[19px] md:max-w-[300px]  md:pt-0 sm: flex sm:items-center sm:justify-between md:block md:h-full dark:bg-dark-grey">
       <a class="flex gap-[16px] items-center pl-[16px] md:pt-[32.78px] no-underline">
         <img class="w-6 h-6 cursor-pointer" id="toggleMobileNav"
           src="/assets/images/image-bars.svg" alt="image bars">
@@ -64,26 +64,39 @@
 
       <!-- Desktop Toggle Button and Hide Sidebar -->
        <div class="fixed bottom-0 pb-[16.25px]">
-        <div class="bg-light-grey flex items-center justify-center w-[251px] h-[48px] rounded-[6px] ml-[16px] left-0 right-0 gap-[25px] mb-[14px]">
+        <div class="bg-light-grey dark:bg-indigo flex items-center justify-center w-[251px] h-[48px] rounded-[6px] ml-[16px] left-0 right-0 gap-[25px] mb-[14px]">
     
-          <!-- Sun Icon -->
-          <span class="text-xl">☀️</span>
+          <div class="relative flex items-center justify-center 
+            before:content-['☀️'] before:absolute before:-left-6 before:text-xl 
+            after:content-['🌑'] after:absolute after:-right-6 after:text-xl">
 
-          <!-- Toggle Switch -->
-          <button id="themeToggle"
+            <!-- Hidden Checkbox -->
+            <input type="checkbox" id="desktopToggleBtn" class="absolute invisible peer" />
+
+            <label for="desktopToggleBtn"
+              class=" block w-[40px] h-[20px] rounded-full bg-[#635FC7] cursor-pointer relative peer-checked:bg-[#635FC7] mx-[10px] dark:bg-very-dark-grey peer-checked:dark:bg-very-dark-grey
+              after:content-[''] after:w-[14px] after:h-[14px] after:bg-white after:absolute after:rounded-full after:top-[3px] after:left-[4px] after:transition-[left] after:duration-300
+              peer-checked:after:left-[20px]">
+            </label>
+
+          </div>
+          <!-- <span class="text-xl">☀️</span>
+
+          
+          <button id="toggleTheme"
             class="w-[40px] h-[20px] bg-[#635FC7] rounded-[12px] flex items-center px-1 transition-all duration-300 relative"
             aria-label="Toggle Theme">
-            <span id="toggleCircle"
+            <span id="toggleSwitch"
               class="w-[14px] h-[14px] bg-white rounded-full transform transition-all duration-300"></span>
           </button>
 
-          <!-- Moon Icon -->
-          <span class="text-xl">🌑</span>
+          
+          <span class="text-xl">🌑</span> -->
         </div>
 
-        <div id="hideSidebarBtn" class="h-[49.75px] w-[276px] bg-[#F4F7FD] rounded-tr-[100px] rounded-br-[100px] pt-[14px] cursor-pointer">
+        <div id="hideSidebarBtn" class="h-[49.75px] w-[276px] bg-[#F4F7FD] dark:bg-indigo rounded-tr-[100px] rounded-br-[100px] pt-[14px] cursor-pointer">
           <span class="pl-[26px]">🚫</span>
-          <span class="text-[15px] text-indigo font-bold pl-[41px]">Hide Sidebar</span>
+          <span class="text-[15px] text-indigo font-bold pl-[41px] dark:text-white">Hide Sidebar</span>
         </div>
        </div>
       </div>
@@ -92,11 +105,11 @@
 
 
     <!-- Main Layout: Header with board title, add task button, and main content area for task columns. -->
-    <div class="lg:h-screen md:w-full md:border-l md:border-background-light lg:overflow-x-hidden">
+    <div class="lg:h-screen md:w-full md:border-l md:border-background-light dark:border-background-light lg:overflow-x-hidden dark:bg-very-dark-grey dark:text-white">
 
-      <header class="hidden md:block md:bg-white md:border-b md:border-background-light pt-[29px] px-[24px] pb-[37px] lg:h-[96px]">
+      <header class="hidden md:block md:bg-white md:border-b md:border-background-light pt-[29px] px-[24px] pb-[37px] lg:h-[96px] dark:bg-dark-grey">
         <div class="md:flex md:items-center md:justify-between">
-          <h2 class="md:text-2xl md:font-bold cursor-pointer">Launch Career</h2>
+          <h2 class="md:text-2xl md:font-bold cursor-pointer dark:text-white">Launch Career</h2>
           <!-- Add new task button for desktop-->
            <button type="submit" class="bg-indigo text-white font-bold text-[10px] lg:text-[12px] xl:text-[15px] py-[10px] px-[24px] rounded-[24px] focus:ring-2 focus:ring-white cursor-pointer hidden md:block" 
            id="newTaskButton" tabindex="0">
@@ -110,7 +123,7 @@
           👀
         </div>
 
-      <div class="pt-[32px] md:p-[24px] min-h-screen bg-light-grey"> 
+      <div class="pt-[32px] md:p-[24px] min-h-screen bg-light-grey dark:bg-very-dark-grey dark:text-white"> 
         <main role="main" class="flex flex-wrap m-auto gap-[19px] pl-26px pr-29px items-start">
 
           <!-- Task Columns: Display tasks grouped by status (TODO, DOING, DONE). -->
@@ -160,10 +173,10 @@
       <!-- Backdrop -->
       <div class="bg-black opacity-50 fixed top-0 left-0 w-full h-[130vh]"></div>
 
-      <div id="formContainer" class="bg-white absolute top-[69px] lg:top-[249px] left-0 right-0 m-auto w-[343px] md:w-[600px] p-[24px] rounded-[6px] h-[560px] md:h-[587px] flex flex-col g-[24px]">
+      <div id="formContainer" class="bg-white dark:bg-dark-grey absolute top-[69px] lg:top-[249px] left-0 right-0 m-auto w-[343px] md:w-[600px] p-[24px] rounded-[6px] h-[560px] md:h-[587px] flex flex-col g-[24px]">
 
         <div class="flex items-center justify-between pb-4">
-          <h2 class="text-[18px] font-bold leading-100%">New Task</h2>
+          <h2 class="text-[18px] dark:text-white font-bold leading-100%">New Task</h2>
                   
           <img src="./assets/images/Group 45.svg" id="closeButton" alt="close button">
         </div>
@@ -173,21 +186,21 @@
         <!-- Task Title -->
         <label for="title" class="text-[12px] font-bold text-medium-grey">Title</label>
         <div class="mt-[8px] relative">
-          <input id="title" name="title" type="text" placeholder="e.g. Take chilled break" class="relative font-body border border-gray-300 rounded h-[40px] w-full pt-[8px] pb-[9px] pl-[18px] mb-[24px]  text-[13px]"/>
+          <input id="title" name="title" type="text" placeholder="e.g. Take chilled break" required class="relative dark:text-black font-body border border-gray-300 rounded h-[40px] w-full pt-[8px] pb-[9px] pl-[18px] mb-[24px]  text-[13px]"/>
           <!-- Error Message -->
           <p id="errorMessage" class="absolute w-[180px] h-[48px] bg-white text-medium-grey rounded-[8px] right-[25px] left-[128px] top-[55px] shadow-custom-shadow pt-[12px] text-[13px] text-center">❗ Please fill out this field.</p>
         </div>
 
         <!-- Task Description -->
         <label for="description" class="text-[12px] font-bold text-medium-grey">Description</label>
-        <textarea id="description" name="description" 
-          class="h-[112px] text-[13px] border border-gray-300 rounded w-full pt-[8px] pb-[9px] pl-[18px] pr-[18px] mb-[24px] mt-[8px]"></textarea>
+        <textarea id="description" name="description" placeholder="e.g. Pet your dog, have a cup of coffee, dance to your favourite song and come back to conquer this challenge. 💪🏾" required
+          class="h-[112px] text-[13px] border border-gray-300 rounded w-full pt-[8px] pb-[9px] pl-[18px] pr-[18px] mb-[24px] mt-[8px] dark:text-black"></textarea>
 
         <!-- Task Status -->
         <label for="taskStatus" class="mb-[8px] text-[12px] font-bold text-medium-grey">Status</label>
         <div class="w-full border border-green-300 rounded flex items-center justify-between mb-[24px] mt-[8px]">
           <select id="taskStatus" class="appearance-none font-body text-[13px] w-full pt-[8px] pb-[8px] pl-[18px] leading-[23px] pr-4 bg-[url('data:image/svg+xml;utf8,<svg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2211%22%20height=%228%22%20viewBox=%220%200%2011%208%22%20fill=%22none%22><path%20d=%22M0.79834%201.54863L5.49682%206.24711L10.1953%201.54863%22%20stroke=%22%23828FA3%22%20stroke-width=%222%22/></svg>')] bg-no-repeat bg-[length:0.8rem] bg-[right_0.75rem_center]
-         border border-gray-400 rounded px-3 py-2">
+         border border-gray-400 rounded px-3 py-2 dark:text-black">
             <option value="todo">todo</option>
             <option value="doing">in progress</option>
             <option value="done">done</option>
@@ -198,7 +211,7 @@
         <label for="taskPriority" class="mb-[8px] text-[12px] font-bold text-medium-grey">Priority</label>
         <div class="w-full border border-gray-300 rounded flex items-center justify-between mb-[24px] mt-[8px]">
           <select id="taskPriority" class="appearance-none font-body text-[13px] w-full pt-[8px] pb-[8px] pl-[18px] leading-[23px] pr-4 bg-[url('data:image/svg+xml;utf8,<svg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2211%22%20height=%228%22%20viewBox=%220%200%2011%208%22%20fill=%22none%22><path%20d=%22M0.79834%201.54863L5.49682%206.24711L10.1953%201.54863%22%20stroke=%22%23828FA3%22%20stroke-width=%222%22/></svg>')] bg-no-repeat bg-[length:0.8rem] bg-[right_0.75rem_center]
-         border border-gray-400 rounded px-3 py-2">
+         border border-gray-400 rounded px-3 py-2 dark:text-black">
             <option value="low">low</option>
             <option value="medium">medium</option>
             <option value="high">high</option>
@@ -219,10 +232,10 @@
       <div class="bg-black opacity-50 fixed top-0 left-0 w-full h-[130vh]"></div>
 
       <!-- Form Container -->
-      <div id="formContainer" class="bg-white absolute top-[64px] lg:top-[249px] left-0 right-0 m-auto w-[343px] md:w-[600px] p-[24px] rounded-[6px] h-[600px] md:h-[560px] flex flex-col g-[24px]">
+      <div id="formContainer" class="bg-white dark:bg-dark-grey absolute top-[64px] lg:top-[249px] left-0 right-0 m-auto w-[343px] md:w-[600px] p-[24px] rounded-[6px] h-[600px] md:h-[560px] flex flex-col g-[24px]">
 
         <div class="flex items-center justify-between pb-4">
-          <h2 class="text-[18px] font-bold leading-100%">Task</h2>
+          <h2 class="text-[18px] dark:text-white font-bold leading-100%">Task</h2>
                   
           <img src="./assets/images/Group 45.svg" id="closeModalBtn" alt="close button">
         </div>
@@ -231,18 +244,18 @@
          <form>
             <!-- Task Title -->
             <label for="title" class="text-[12px] font-bold text-medium-grey">Title</label>
-            <input id="title" name="title" type="text" placeholder="e.g. Take chilled break" class="relative font-body border border-gray-300 rounded h-[40px] w-full pt-[8px] pb-[9px] pl-[18px] mb-[24px] mt-[8px] text-[13px]"/>
+            <input id="title" name="title" type="text" placeholder="e.g. Take chilled break" class="relative dark:text-black font-body border border-gray-300 rounded h-[40px] w-full pt-[8px] pb-[9px] pl-[18px] mb-[24px] mt-[8px] text-[13px]"/>
 
             <!-- Task Description -->
             <label for="description" class="text-[12px] font-bold text-medium-grey">Description</label>
             <textarea id="description" name="description" 
-              class="h-[112px] text-[13px] border border-gray-300 rounded w-full pt-[8px] pb-[9px] pl-[18px] pr-[18px] mb-[24px] mt-[8px]"></textarea>
+              class="h-[112px] text-[13px] border border-gray-300 rounded w-full pt-[8px] pb-[9px] pl-[18px] pr-[18px] mb-[24px] mt-[8px] dark:text-black"></textarea>
 
             <!-- Task Status -->
             <label for="taskStatus" class="mb-[8px] text-[12px] font-bold text-medium-grey">Status</label>
             <div class="w-full border border-green-300 rounded flex items-center justify-between mb-[24px] mt-[8px]">
               <select id="taskStatus" class="appearance-none font-body text-[13px] w-full pt-[8px] pb-[8px] pl-[18px] leading-[23px] pr-4 bg-[url('data:image/svg+xml;utf8,<svg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2211%22%20height=%228%22%20viewBox=%220%200%2011%208%22%20fill=%22none%22><path%20d=%22M0.79834%201.54863L5.49682%206.24711L10.1953%201.54863%22%20stroke=%22%23828FA3%22%20stroke-width=%222%22/></svg>')] bg-no-repeat bg-[length:0.8rem] bg-[right_0.75rem_center]
-            border border-gray-400 rounded px-3 py-2">
+            border border-gray-400 rounded px-3 py-2 dark:text-black">
                 <option value="todo">todo</option>
                 <option value="doing">in progress</option>
                 <option value="done">done</option>
@@ -253,7 +266,7 @@
             <label for="taskPriority" class="mb-[8px] text-[12px] font-bold text-medium-grey">Priority</label>
             <div class="w-full border border-gray-300 rounded flex items-center justify-between mb-[24px] mt-[8px]">
               <select id="taskPriority" class="appearance-none font-body text-[13px] w-full pt-[8px] pb-[8px] pl-[18px] leading-[23px] pr-4 bg-[url('data:image/svg+xml;utf8,<svg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2211%22%20height=%228%22%20viewBox=%220%200%2011%208%22%20fill=%22none%22><path%20d=%22M0.79834%201.54863L5.49682%206.24711L10.1953%201.54863%22%20stroke=%22%23828FA3%22%20stroke-width=%222%22/></svg>')] bg-no-repeat bg-[length:0.8rem] bg-[right_0.75rem_center]
-            border border-gray-400 rounded px-3 py-2">
+            border border-gray-400 rounded px-3 py-2 dark:text-black">
                 <option value="low">low</option>
                 <option value="medium">medium</option>
                 <option value="high">high</option>
