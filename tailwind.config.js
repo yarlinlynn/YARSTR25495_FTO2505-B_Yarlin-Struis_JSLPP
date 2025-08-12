@@ -5,7 +5,7 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx,html,css}",
     "./src/styles/**/*.css",
   ],
-  
+  darkMode: 'class',
   safelist: [
   'w-[340px]', 'rounded-[8px]', 'bg-white', 'pt-[16px]', 'pb-[23px]', 'text-[12px]', 'pl-[59px]', 'tracking-[2.4px]', 'text-medium-grey',
   'font-bold', 'leading-[100%]', 'ml-[65px]', 'mt-[19px]', 'mr-[14.15px]', 'mb-[31px]', 'w-[293px]', 'h-[49px]', 'rounded-tr-[100px]',

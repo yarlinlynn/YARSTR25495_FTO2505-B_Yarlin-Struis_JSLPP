@@ -1,357 +1,56 @@
 
-import { initialTasks } from "../js/initialData.js";
+import { saveTasksToLocalStorage, loadTasksFromLocalStorage } from "./utils/localStorage.js";
+import { renderTasksToTheDom, clearTaskColumns } from "./ui/renderTasks.js";
+import { newTaskModal } from "./tasks/newTaskModal.js";
+import { mobileNav } from "./ui/mobileNav.js";
+import { sidebarToggle } from "./utils/sidebarToggle.js";
+import { setupThemeToggle } from "./utils/toggleTheme.js";
 
-/**
- * GET DOM ELEMENTS
- * @type {HTMLElement}
-*/
+// Shared in-memory task array
+export let tasks = [];
 
-// Get task column containers
+// Shared DOM elements
+export const todoColumn = document.getElementById("todoColumn");
+export const inProgressColumn = document.getElementById("inProgressColumn");
+export const doneColumn = document.getElementById("doneColumn");
 
-const todoColumn = document.getElementById("todoColumn");
-const inProgressColumn = document.getElementById("inProgressColumn");
-const doneColumn = document.getElementById("doneColumn");
+export const todoHeading = document.getElementById("todo-heading");
+export const inProgressHeading = document.getElementById("doing-heading");
+export const doneHeading = document.getElementById("done-heading");
 
-// Task heading elements
-
-const todoHeading = document.getElementById("todo-heading");
-const inProgressHeading = document.getElementById("doing-heading");
-const doneHeading = document.getElementById("done-heading");
-
-// Hide & show elements
-
-const sidebar = document.querySelector(".sidebar");
-const showSidebarBtn = document.getElementById("showSidebarBtn");
-const hideSidebarBtn = document.getElementById("hideSidebarBtn");
-
-// Toggle Light and Dark Switch
-const toggleTheme = document.querySelectorAll("#toggleTheme");
-const toggleSwitch = document.querySelectorAll("#toggleSwitch");
-
-// Count of tasks in each column
-
-let todoCount = 0;
-let inProgressCount = 0;
-let doneCount = 0;
-
-/**
- * Save tasks to localStorage
-*/
-const savedTasks = JSON.parse(localStorage.getItem('myKey')) || [];
-if (savedTasks.length > 0) {
-  initialTasks.length = 0;
-  initialTasks.push(...savedTasks);
-}
-
-// Render all tasks to the DOM
-initialTasks.forEach(renderTasksToTheDom);
-
-/**
- * Render tasks to the DOM
- * @typedef {Object} Task
- * @param {Task} task - The task object to display
-*/
-function renderTasksToTheDom(task) {
-  const listElement = document.createElement("li");
-  listElement.className = "task mb-[21px] bg-white h-[65px] pt-[20px] px-[19px] pb-[21px] rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo dark:bg-dark-grey dark:text-white";
-  listElement.setAttribute("tabindex", "0");
-  listElement.textContent = task.title;
-
-  // Show modal
-  listElement.addEventListener("click", () => renderTaskModal(task));
-
-  // check the status and put each in their respective columns
-  if (task.status === "todo") {
-    todoColumn.appendChild(listElement);
-    todoCount++;
-    todoHeading.textContent = `TODO (${todoCount})`;
-  } else if (task.status === "doing") {
-    inProgressColumn.appendChild(listElement);
-    inProgressCount++;
-    inProgressHeading.textContent = `IN PROGRESS (${inProgressCount})`;
-  } else if (task.status === "done") {
-    doneColumn.appendChild(listElement);
-    doneCount++;
-    doneHeading.textContent = `DONE (${doneCount})`;
-  }
-}
-
-/**
- * Render task modal popup
- * @typedef {Object} Task
- * @param {Task} task - The task object to display
-*/
-function renderTaskModal(task) {
-  const modalWrapper = document.createElement("section");
-  modalWrapper.classList.add("fixed", "top-0", "left-0", "w-full", "h-full", "z-50");
-  modalWrapper.innerHTML = `
-    <!-- Backdrop -->
-      <div class="bg-black opacity-50 fixed top-0 left-0 w-full h-[130vh]"></div>
-
-      <!-- Form Container -->
-      <div id="formContainer" class="bg-white dark:bg-dark-grey absolute top-[99px] lg:top-[242px] left-0 right-0 m-auto w-[343px] md:w-[600px] p-[24px] rounded-[6px] h-[410px] md:h-[415px] flex flex-col g-[24px]">
-
-        <div class="flex items-center justify-between pb-4">
-          <h2 class="text-[18px] dark:text-white font-bold leading-100%">Task</h2>
-                  
-          <img src="./assets/images/Group 45.svg" id="closeModalBtn" alt="close button">
-        </div>
-
-        <!-- Form Container -->
-         <form>
-            <!-- Task Title -->
-            <label for="title" class="text-[12px] font-bold text-medium-grey">Title</label>
-            <input id="title" name="title" type="text" placeholder="e.g. Take chilled break" class="relative dark:text-black font-body border border-gray-300 rounded h-[40px] w-full pt-[8px] pb-[9px] pl-[18px] mb-[24px] mt-[8px] text-[13px]"/>
-
-            <!-- Task Description -->
-            <label for="description" class="text-[12px] font-bold text-medium-grey">Description</label>
-            <textarea id="description" name="description" 
-              class="h-[112px] text-[13px] border border-gray-300 rounded w-full pt-[8px] pb-[9px] pl-[18px] pr-[18px] mb-[24px] mt-[8px] dark:text-black"></textarea>
-
-            <!-- Task Status -->
-            <label for="taskStatus" class="mb-[8px] text-[12px] font-bold text-medium-grey">Status</label>
-            <div class="w-full border border-green-300 rounded flex items-center justify-between mb-[24px] mt-[8px]">
-              <select id="taskStatus" class="appearance-none font-body text-[13px] w-full pt-[8px] pb-[8px] pl-[18px] leading-[23px] pr-4 bg-[url('data:image/svg+xml;utf8,<svg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2211%22%20height=%228%22%20viewBox=%220%200%2011%208%22%20fill=%22none%22><path%20d=%22M0.79834%201.54863L5.49682%206.24711L10.1953%201.54863%22%20stroke=%22%23828FA3%22%20stroke-width=%222%22/></svg>')] bg-no-repeat bg-[length:0.8rem] bg-[right_0.75rem_center]
-            border border-gray-400 rounded px-3 py-2 dark:text-black">
-                <option value="todo">todo</option>
-                <option value="doing">in progress</option>
-                <option value="done">done</option>
-              </select>
-            </div>
-
-         </form>
-         
-
-      </div>
-  `;
-
-  // Append modal to body
-  document.body.appendChild(modalWrapper);
-
-  const titleInput = modalWrapper.querySelector("#title");
-  const taskDescription = modalWrapper.querySelector("#description");
-  const statusSelect = modalWrapper.querySelector("#taskStatus");
-
-  titleInput.value = task.title;
-  taskDescription.value = task.description;
-  statusSelect.value = task.status;
-
-  // Close modal on button click
-  const closeModalBtn = modalWrapper.querySelector("#closeModalBtn");
-  closeModalBtn.addEventListener("click", () => {
-    modalWrapper.remove();
-  });
-}
-
-/**
- * Render mobile navigation to the DOM
-*/
-document.getElementById("toggleMobileNav").addEventListener("click", function() {
-  // Create a new element
-    const navContainer = document.createElement("div");
-
-    navContainer.innerHTML = `
-      <!-- Backdrop -->
-      <div class="bg-black opacity-50 fixed top-[65px] left-0 right-0 w-full h-[130vh]"></div>
-
-      <!-- Navigation Container: Holding light/dark toggle button -->
-      <div class="MobileNav">
-        <div class="flex items-center justify-between mb-[19px]">
-          <h4 class="text-[12px] pl-[59px] tracking-[2.4px] text-medium-grey font-bold leading-[100%] ">ALL BOARDS (1)</h4>
-          <img class="mr-[14.15px]" id="closeButton"
-            src="./assets/images/Group 45.svg" alt="close button">
-        </div>
-        
-        <button tabindex="0" class="mt-[19px] mb-[31px] w-[293px] h-[49px] rounded-tr-[100px] rounded-br-[100px] bg-[#635FC7] text-white font-bold text-[15px] leading-[100%]">
-          Launch Career
-        </button>
-       
-        <div class="bg-[#F4F7FD] dark:bg-indigo w-[260px] h-[48px] rounded-[6px] relative left-0 right-0 mx-auto pt-[10px] pb-[17px] text-center flex items-center justify-center gap-4">
-    
-          <div class="relative flex items-center justify-center 
-            before:content-['☀️'] before:absolute before:-left-6 before:text-xl 
-            after:content-['🌑'] after:absolute after:-right-6 after:text-xl">
-
-            <!-- Hidden Checkbox -->
-            <input type="checkbox" id="mobileToggleBtn" class="absolute invisible peer" />
-
-            <label for="mobileToggleBtn"
-              class=" block w-[40px] h-[20px] rounded-full bg-[#635FC7] cursor-pointer relative peer-checked:bg-[#635FC7] mx-[10px] dark:bg-very-dark-grey peer-checked:dark:bg-very-dark-grey
-              after:content-[''] after:w-[14px] after:h-[14px] after:bg-white after:absolute after:rounded-full after:top-[3px] after:left-[4px] after:transition-[left] after:duration-300
-              peer-checked:after:left-[20px]">
-            </label>
-
-          </div>
-        </div>
-      </div>
-    `;
-  // Append the new div to the container
-    document.body.appendChild(navContainer);
-
-    // Removes the modal when clicked
-    const closeButton = navContainer.querySelector("#closeButton");
-    closeButton.addEventListener("click", function () {
-      navContainer.remove(); 
-    });
-
-});
-
-/**
- * Render new task modal popup
-*/
-document.querySelectorAll("#newTaskButton").forEach(btn => {
-  btn.addEventListener("click", function () {
-
-  // Create a new element for popup Modal asking user to add new task
-  const modalPopUp = document.createElement("section");
-  // modalPopUp.classList.add("absolute top-0 w-full ")
-
-  modalPopUp.innerHTML = `
-    <!-- Backdrop -->
-      <div class="bg-black opacity-50 fixed top-0 left-0 w-full h-[130vh]"></div>
-
-      <div id="formContainer" class="bg-white dark:bg-dark-grey absolute top-[99px] lg:top-[267px] left-0 right-0 m-auto w-[343px] md:w-[600px] p-[24px] rounded-[6px] h-[479px] md:h-[479px] flex flex-col g-[24px]">
-
-        <div class="flex items-center justify-between pb-4">
-          <h2 class="text-[18px] dark:text-white font-bold leading-100%">New Task</h2>
-                  
-          <img src="./assets/images/Group 45.svg" id="closeButton" alt="close button">
-        </div>
-
-        <!-- Form Container -->
-       <form>
-        <!-- Task Title -->
-        <label for="newTitle" class="text-[12px] font-bold text-medium-grey">Title</label>
-        <div class="mt-[8px] relative">
-          <input id="newTitle" name="title" type="text" placeholder="e.g. Take chilled break" class="relative font-body border border-gray-300 rounded h-[40px] w-full pt-[8px] pb-[9px] pl-[18px] mb-[24px]  text-[13px]"/>
-          <!-- Error Message -->
-          <p id="errorMessage" class="hidden absolute z-50 w-[180px] h-[48px] bg-white text-medium-grey rounded-[8px] right-[25px] left-[128px] top-[55px] shadow-custom-shadow pt-[12px] text-[13px] text-center">❗ Please fill out this field.</p>
-        </div>
-
-        <!-- Task Description -->
-        <label for="newDescription" class="text-[12px] font-bold text-medium-grey">Description</label>
-        <textarea id="newDescription" name="description" 
-          class="h-[112px] text-[13px] border border-gray-300 rounded w-full pt-[8px] pb-[9px] pl-[18px] pr-[18px] mb-[24px] mt-[8px]"></textarea>
-
-        <!-- Task Status -->
-        <label for="newTaskStatus" class="mb-[8px] text-[12px] font-bold text-medium-grey">Status</label>
-        <div class="w-full border border-green-300 rounded flex items-center justify-between mb-[24px] mt-[8px]">
-          <select id="newTaskStatus" class="appearance-none font-body text-[13px] dark:text-black w-full pt-[8px] pb-[8px] pl-[18px] leading-[23px] pr-4 bg-[url('data:image/svg+xml;utf8,<svg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2211%22%20height=%228%22%20viewBox=%220%200%2011%208%22%20fill=%22none%22><path%20d=%22M0.79834%201.54863L5.49682%206.24711L10.1953%201.54863%22%20stroke=%22%23828FA3%22%20stroke-width=%222%22/></svg>')] bg-no-repeat bg-[length:0.8rem] bg-[right_0.75rem_center]
-         border border-gray-400 rounded px-3 py-2">
-            <option value="todo">todo</option>
-            <option value="doing">in progress</option>
-            <option value="done">done</option>
-          </select>
-        </div>
-
-        <!-- Form Buttons -->
-        <button id="createNewTask" class="w-[290px] h-[40px] rounded-[20px] bg-[#635FC7] text-white font-bold text-[13px] leading-[23px] md:w-[424px] md:m-auto md:flex md:items-center md:justify-center">Create Task</button>
-        
-       </form>
-
-      </div>
-  `;
-
-  document.body.appendChild(modalPopUp);
-
-  // Add event listener for the submit button to call the getTaskDetails function
-  document.getElementById("createNewTask").addEventListener("click", function(e) {
-    e.preventDefault(); // Prevent default form submit
-
-    const taskCreated = getNewTaskDetails(); 
-    // check if title is entered from user
-    if (taskCreated) { // Only close if a task was added
-      modalPopUp.remove();
-    }
-  });
+// Fetch tasks from API
+async function fetchTasks() {
+  clearTaskColumns();
+  // add loading element while data is being fetched
   
-  // Removes the whole dynamic content when clicked
-    const closeButton = modalPopUp.querySelector("#closeButton");
-    closeButton.addEventListener("click", function () {
-      modalPopUp.remove(); 
-    });
-  });
-});
+  try {
+    const response = await fetch("https://jsl-kanban-api.vercel.app/");
+    if (!response.ok) throw new Error(`HTTP error: ${res.status}`);
 
-/**
- * Get new task details
-*/
-function getNewTaskDetails() {
+    const data = await res.json();
+    tasks = [...data];
+    console.log(data)
 
-  // calculate the id of task entered by user and have it start at the last id from array
-  let id = initialTasks[initialTasks.length - 1 ].id + 1
+    saveTasksToLocalStorage(tasks);
 
-  // get user title, description and status entered
-  let title = document.getElementById("newTitle").value;
-  let description = document.getElementById("newDescription").value.trim();
-  let status = document.getElementById("newTaskStatus").value;
+    clearTaskColumns();
+    tasks.forEach(renderTasksToTheDom);
 
-  let errorMessage = document.getElementById("errorMessage");
-
-  if (title === null || title === undefined || title.trim().length === 0) {
-
-    // Focus the input so user knows where to type
-    document.getElementById("newTitle").focus();
-
-    errorMessage.style.display = "block";
-    return false; 
-  } else {
-    errorMessage.style.display = "none";   
+  } catch (err) {
+    console.error(err);
   }
-
-  // Capitalize first letter of title
-  title = title.charAt(0).toUpperCase() + title.slice(1);
-
-  // Create new task
-  const newTask = { 
-    id, 
-    title, 
-    description, 
-    status 
-  };
-  
-  // Push new task to the array
-  initialTasks.push(newTask);
-  renderTasksToTheDom(newTask);
-
- // Save new tasks to local storage that persists on page load
-  localStorage.setItem('myKey', JSON.stringify(initialTasks));
-
-  console.log(initialTasks);
-  return true;
 }
 
-/**
- * Add and remove sidebar on click
-*/
-hideSidebarBtn.addEventListener("click", () => {
-  if (sidebar.style.display === "none") {
-    sidebar.style.display = ""; 
-  } else {
-    sidebar.style.display = "none";
-  }
-  showSidebarBtn.style.display = "block"
-});
+function taskboardApp() {
+  setupThemeToggle();
+  loadTasksFromLocalStorage();
+  tasks.forEach(renderTasksToTheDom);
 
-showSidebarBtn.addEventListener("click", () => {
-  if (sidebar.style.display === "none") {
-    sidebar.style.display = "block";
-  }
-  showSidebarBtn.style.display = "none";
-});
+  newTaskModal();
+  mobileNav();
+  sidebarToggle();
 
-/**
- * Dark and Light Theme Switch Button
- */
-document.querySelectorAll("#toggleTheme").forEach( btn => {
-  btn.add
-})
+  fetchTasks();
+}
 
-toggleTheme.forEach( btn => {
-  btn.addEventListener("click", () => {
-    // grab the dark colors from config file
-
-    // move switch button
-    
-  })
-})
+document.addEventListener("DOMContentLoaded", taskboardApp);
