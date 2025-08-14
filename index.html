@@ -152,6 +152,17 @@
 
     </div>
 
+    <!-- Loading Animation informing user data is being fetched -->
+    <div id="loading" class=" fixed inset-0 z-50 flex items-center justify-center">
+      <div class="flex flex-col items-center justify-center bg-white p-6 rounded-lg shadow-lg w-72 sm:w-80 md:w-96 text-center">
+        
+        <!-- Spinner -->
+        <div class="w-12 h-12 border-4 border-gray-300 border-t-blue-500 rounded-full animate-spin mb-4"></div>
+        
+        <p class="text-gray-700 text-base sm:text-lg">Fetching data... please wait.</p>
+      </div>
+    </div>
+
     <!--  js link -->
     <script type="module" src="./assets/js/script.js"></script>
   </body>
