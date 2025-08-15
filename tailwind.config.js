@@ -13,7 +13,7 @@ module.exports = {
   'font-bold', 'leading-[100%]', 'ml-[65px]', 'mt-[19px]', 'mr-[14.15px]', 'mb-[31px]', 'w-[293px]', 'h-[49px]', 'rounded-tr-[100px]', "gap-3", "gap-1",
   'rounded-br-[100px]', 'bg-[#635FC7]', 'text-white', 'text-[15px]', 'bg-[#F4F7FD]', 'w-[260px]', 'h-[48px]', 'rounded-[6px]', 'pt-[10px]',
   'pb-[17px]', 'text-center', 'flex', 'items-center', 'justify-center', 'gap-4', 'text-xl', 'absolute', 'top-0', 'w-full', 'bg-black', "md:top-1/2", "md:left-1/2", "md:-translate-x-1/2", "md:-translate-y-1/2",
-  'opacity-50', 'fixed', 'left-0', 'h-[130vh]', 'md:w-[600px]', 'p-[24px]', 'h-[532px]', 'md:h-[415px]', 'flex-col', 'gap-[24px]',
+  'opacity-50', 'fixed', 'left-0', 'h-[130vh]', 'md:w-[600px]', 'p-[24px]', 'h-[532px]', 'md:h-[415px]', 'flex-col', 'gap-[24px]', "top-[69px]",
   'text-[18px]', 'text-[13px]', 'h-[40px]', 'mb-[24px]', 'pt-[8px]', 'pb-[9px]', 'pl-[18px]', 'rounded', 'border', 'border-gray-300',
   'appearance-none', 'leading-[23px]', 'w-[300px]', 'bg-indigo', 'bg-red', 'h-full', 'px-[18px]', 'mt-[8px]', 'mb-[21px]', 'h-[60px]',
   'pt-[20px]', 'px-[19px]', 'pb-[21px]', 'rounded-lg', 'text-rich-black', 'shadow-custom-shadow', 'cursor-pointer', 'focus:outline-none',
@@ -24,7 +24,7 @@ module.exports = {
   "dark:text-white", "dark:bg-dark-grey", "dark:bg-indigo", "h-[200px]", "w-[200px]", "bg-[#f5f5dc]", "flex", "m-auto", "fixed", "inset-0", "z-50", "animate-spin", "rounded-full", "block", "h-[50px]", "w-[50px]", "border-t-4", "border-light-grey", "border-solid mb-4",
   "top-1/2", "left-1/2", "-translate-x-1/2", "-translate-y-1/2", "bg-white", "p-5", " rounded-[10px]", "shadow-md", "w-10", "h-10", "border-4", "border-gray-200", "border-t-4", "border-t-blue-500", "rounded-full", "animate-spin", "mx-auto", "mb-4",
   "after:bg-green-500", "after:bg-orange-500", "after:bg-blue-500", "after:content-['']", "after:inline-block", "after:w-3", "after:h-3", "after:rounded-full", "after:ml-[5rem]",
-  "bg-white", "dark:bg-dark-grey", "absolute", "top-[69px]", "left-[14px]", "right-[14px]", "m-auto", "w-[343px]", "md:w-[600px]", "p-[24px]", "rounded-[6px]", "h-[560px]", "md:h-[587px]", "flex", "flex-col", "gap-[24px]", "md:top-1/2", "md:left-1/2", "md:-translate-x-1/2", "md:-translate-y-1/2"
+  "bg-white", "dark:bg-dark-grey", "absolute", "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ml--[14px] mr-[14px] m-auto w-[343px] md:w-[600px] p-[24px] rounded-[6px] overflow-y-auto", "max-h-[560px]", "md:h-[587px]", "flex", "flex-col", "gap-[24px]"
 ],
   theme: {
     extend: {
