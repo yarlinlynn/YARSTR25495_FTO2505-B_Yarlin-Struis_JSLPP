@@ -2,9 +2,11 @@
 
 A **modern task management web application** built with **JavaScript** and **Tailwind CSS**. The app allows users to create, organize, and prioritize tasks with an intuitive interface and dark/light theme support.  
 
-This project was developed as part of my **JavaScript bootcamp journey**, showcasing the concepts and skills I’ve learned along the way. It reflects my growth in building interactive applications, handling data persistence, and creating user-friendly interfaces.  
+This project was developed as part of learning **JavaScript**, showcasing the concepts and skills I’ve learned along the way. It reflects my growth in building interactive applications, handling data persistence, and creating user-friendly interfaces.  
 
 ## 📸 Screenshot
+
+ <a href="https://kanban-taskboard-made-simple.netlify.app/"><strong>➥ Live Website</strong></a>
 
 ![Figma Design for Kanban Taskboard App](<assets/design /Kanban-Taskboard-App.PNG>)
 
@@ -12,6 +14,7 @@ This project was developed as part of my **JavaScript bootcamp journey**, showca
 
 ### Video Presentation
 
+https://www.loom.com/share/d041d7fa508c44e38fc0de3b39c459a1?sid=d895ae2f-4530-4dc2-abdc-548cfb1111f7
 
 <br/>
 
