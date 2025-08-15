@@ -221,7 +221,7 @@ function renderTaskModal(task) {
       <div class="bg-black opacity-50 fixed top-0 left-0 w-full h-[130vh]"></div>
 
       <!-- Form Container -->
-      <div id="formContainer" class="bg-white dark:bg-dark-grey absolute top-[69px] left-[14px] right-[14px] m-auto w-[343px] md:w-[600px] p-[24px] rounded-[6px] h-[560px] md:h-[587px] flex flex-col g-[24px] md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2">
+      <div id="formContainer" class="bg-white dark:bg-dark-grey absolute top-[69px] left-[14px] right-[14px] m-auto w-[343px] md:w-[600px] p-[24px] rounded-[6px] h-[560px] md:h-[587px] flex flex-col gap-[24px] md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2">
 
         <div class="flex items-center justify-between pb-4">
           <h2 class="text-[18px] dark:text-white font-bold leading-100%">Task</h2>
@@ -526,7 +526,7 @@ function newTaskModal() {
         <!-- Backdrop -->
         <div class="bg-black opacity-50 fixed top-0 left-0 w-full h-[130vh]"></div>
 
-        <div id="formContainer" class="bg-white dark:bg-dark-grey absolute top-[69px] left-[14px] right-[14px] m-auto w-[343px] md:w-[600px] p-[24px] rounded-[6px] h-[560px] md:h-[587px] flex flex-col g-[24px] md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2">
+        <div id="formContainer" class="bg-white dark:bg-dark-grey absolute top-[69px] left-[14px] right-[14px] m-auto w-[343px] md:w-[600px] p-[24px] rounded-[6px] h-[560px] md:h-[587px] flex flex-col gap-[24px] md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2">
 
           <div class="flex items-center justify-between pb-4">
             <h2 class="text-[18px] dark:text-white font-bold leading-100%">New Task</h2>

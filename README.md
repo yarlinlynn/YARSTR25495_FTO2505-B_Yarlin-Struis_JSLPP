@@ -4,13 +4,14 @@ A **modern task management web application** built with **JavaScript** and **Tai
 
 This project was developed as part of my **JavaScript bootcamp journey**, showcasing the concepts and skills I’ve learned along the way. It reflects my growth in building interactive applications, handling data persistence, and creating user-friendly interfaces.  
 
-## 📸 Screenshots
+## 📸 Screenshot
 
-![Figma Design for Challenge 5](<assets/design /JSL05 challenge.png>)
+![Figma Design for Kanban Taskboard App](<assets/design /Kanban-Taskboard-App.PNG>)
 
 <br/>
 
 ### Video Presentation
+
 
 <br/>
 

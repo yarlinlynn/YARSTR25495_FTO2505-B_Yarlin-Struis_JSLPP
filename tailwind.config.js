@@ -23,7 +23,8 @@ module.exports = {
   "bg-[url('data:image/svg+xml;utf8,<svg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2211%22%20height=%228%22%20viewBox=%220%200%2011%208%22%20fill=%22none%22><path%20d=%22M0.79834%201.54863L5.49682%206.24711L10.1953%201.54863%22%20stroke=%22%23828FA3%22%20stroke-width=%222%22/></svg>')]", "bg-no-repeat", "bg-[right_0.75rem_center]",
   "dark:text-white", "dark:bg-dark-grey", "dark:bg-indigo", "h-[200px]", "w-[200px]", "bg-[#f5f5dc]", "flex", "m-auto", "fixed", "inset-0", "z-50", "animate-spin", "rounded-full", "block", "h-[50px]", "w-[50px]", "border-t-4", "border-light-grey", "border-solid mb-4",
   "top-1/2", "left-1/2", "-translate-x-1/2", "-translate-y-1/2", "bg-white", "p-5", " rounded-[10px]", "shadow-md", "w-10", "h-10", "border-4", "border-gray-200", "border-t-4", "border-t-blue-500", "rounded-full", "animate-spin", "mx-auto", "mb-4",
-  "after:bg-green-500", "after:bg-orange-500", "after:bg-blue-500", "after:content-['']", "after:inline-block", "after:w-3", "after:h-3", "after:rounded-full", "after:ml-[5rem]"
+  "after:bg-green-500", "after:bg-orange-500", "after:bg-blue-500", "after:content-['']", "after:inline-block", "after:w-3", "after:h-3", "after:rounded-full", "after:ml-[5rem]",
+  "bg-white", "dark:bg-dark-grey", "absolute", "top-[69px]", "left-[14px]", "right-[14px]", "m-auto", "w-[343px]", "md:w-[600px]", "p-[24px]", "rounded-[6px]", "h-[560px]", "md:h-[587px]", "flex", "flex-col", "gap-[24px]", "md:top-1/2", "md:left-1/2", "md:-translate-x-1/2", "md:-translate-y-1/2"
 ],
   theme: {
     extend: {
