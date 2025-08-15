@@ -38,11 +38,11 @@
   <body class="font-body text-[15px] md:flex md:justify-between min-h-screen dark:text-white">
 
     <!-- Navigation Sidebar: Contains the logo, navigation links for boards, and theme toggle. -->
-    <nav role="navigation" class="sidebar h-[64px] pt-[20px] pb-[19px] md:max-w-[300px]  md:pt-0 sm: flex sm:items-center sm:justify-between md:block md:h-full dark:bg-dark-grey">
+    <nav role="navigation" class="sidebar h-[64px] pt-[20px] pb-[19px] md:max-w-[300px]  md:pt-0 sm: flex sm:items-center sm:justify-between md:block md:h-screen dark:bg-dark-grey">
       <a class="flex gap-[16px] items-center pl-[16px] md:pt-[32.78px] no-underline">
         <img class="w-6 h-6 cursor-pointer" id="toggleMobileNav"
           src="/assets/images/image-bars.svg" alt="image bars">
-        <img class="h-[23px] cursor-pointer hidden md:block" 
+        <img id="kanbanLogo" class="h-[23px] cursor-pointer hidden md:block" 
           src="/assets/images/kanban.svg" alt="kanban logo"/>
       </a>
 
@@ -154,12 +154,12 @@
 
     <!-- Loading Animation informing user data is being fetched -->
     <div id="loading" class=" fixed inset-0 z-50 flex items-center justify-center">
-      <div class="flex flex-col items-center justify-center bg-white p-6 rounded-lg shadow-lg w-72 sm:w-80 md:w-96 text-center">
+      <div class="flex flex-col items-center justify-center bg-white dark:bg-dark-grey p-6 rounded-lg shadow-lg w-72 sm:w-80 md:w-96 text-center">
         
         <!-- Spinner -->
-        <div class="w-12 h-12 border-4 border-gray-300 border-t-blue-500 rounded-full animate-spin mb-4"></div>
+        <div class="w-12 h-12 border-4 border-gray-300 border-t-soft-indigo rounded-full animate-spin mb-4"></div>
         
-        <p class="text-gray-700 text-base sm:text-lg">Fetching data... please wait.</p>
+        <p class="text-gray-700 dark:text-white text-base sm:text-lg">Fetching data... please wait.</p>
       </div>
     </div>
 
