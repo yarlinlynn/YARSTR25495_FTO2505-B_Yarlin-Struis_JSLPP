@@ -12,7 +12,7 @@ module.exports = {
   'w-[340px]', 'rounded-[8px]', 'bg-white', 'pt-[16px]', 'pb-[23px]', 'text-[12px]', 'pl-[59px]', 'tracking-[2.4px]', 'text-medium-grey', 'md:h-[118vh]', "pb-[8px]", "text-black",
   'font-bold', 'leading-[100%]', 'ml-[65px]', 'mt-[19px]', 'mr-[14.15px]', 'mb-[31px]', 'w-[293px]', 'h-[49px]', 'rounded-tr-[100px]', "gap-3", "gap-1",
   'rounded-br-[100px]', 'bg-[#635FC7]', 'text-white', 'text-[15px]', 'bg-[#F4F7FD]', 'w-[260px]', 'h-[48px]', 'rounded-[6px]', 'pt-[10px]',
-  'pb-[17px]', 'text-center', 'flex', 'items-center', 'justify-center', 'gap-4', 'text-xl', 'absolute', 'top-0', 'w-full', 'bg-black',
+  'pb-[17px]', 'text-center', 'flex', 'items-center', 'justify-center', 'gap-4', 'text-xl', 'absolute', 'top-0', 'w-full', 'bg-black', "md:top-1/2", "md:left-1/2", "md:-translate-x-1/2", "md:-translate-y-1/2",
   'opacity-50', 'fixed', 'left-0', 'h-[130vh]', 'md:w-[600px]', 'p-[24px]', 'h-[532px]', 'md:h-[415px]', 'flex-col', 'gap-[24px]',
   'text-[18px]', 'text-[13px]', 'h-[40px]', 'mb-[24px]', 'pt-[8px]', 'pb-[9px]', 'pl-[18px]', 'rounded', 'border', 'border-gray-300',
   'appearance-none', 'leading-[23px]', 'w-[300px]', 'bg-indigo', 'bg-red', 'h-full', 'px-[18px]', 'mt-[8px]', 'mb-[21px]', 'h-[60px]',

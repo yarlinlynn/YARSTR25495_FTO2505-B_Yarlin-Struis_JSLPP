@@ -1,11 +1,4 @@
 
-// import { fetchData } from "./utils/fetchData.js";
-// import { renderTasksToTheDom,  } from "./ui/renderTasks.js";
-// import { newTaskModal } from "./tasks/newTaskModal.js";
-// import { mobileNav } from "./ui/mobileNav.js";
-// import { sidebarToggle } from "./utils/sidebarToggle.js";
-// import { setupThemeToggle } from "./utils/toggleTheme.js";
-
 /**
  * GET DOM ELEMENTS
  * @type {HTMLElement}
@@ -39,7 +32,7 @@ let doneCount = 0;
 let tasks = []
 
 /**
- * Delay execution for a given number of milliseconds.
+ * Delay execution of loading message
  * 
  * @param {number} ms - The number of milliseconds to delay.
  * @returns {Promise<void>} A promise that resolves after the given delay.
@@ -86,7 +79,6 @@ fetchData();
 
 async function fetchData() {
   // show loading message while data is being fetched from api
-  // alert("Fetching data... please wait.");
   showLoading(); // show loading animation
   await delay(2000); // wait for 2 seconds before fetching
 
@@ -113,7 +105,6 @@ async function fetchData() {
 
   } catch (error) {
     console.error(error);
-    // alert("Failed to fetch tasks from API.");
     // Create custom error message
     const loadingContainer = document.getElementById("loading");
     if (loadingContainer) {
@@ -131,38 +122,6 @@ async function fetchData() {
 }
 
 /**
- * Render tasks to the DOM
- * @typedef {Object} Task
- * @param {Task} task - The task object to display
-*/
-// function renderDataToTheDom(task) {
-//   const listElement = document.createElement("li");
-//   listElement.className =
-//     "task mb-[21px] bg-white h-[65px] pt-[20px] px-[19px] pb-[21px] rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo dark:bg-dark-grey dark:text-white";
-//   listElement.setAttribute("tabindex", "0");
-//   listElement.textContent = task.title;
-
-//   // to ensure i can find the li id if user wants to delete the task from the dom
-//   listElement.setAttribute("data-id", task.id.toString());
-
-//   listElement.addEventListener("click", () => renderTaskModal(task));
-
-//   if (task.status === "todo") {
-//     todoColumn.appendChild(listElement);
-//     todoCount++;
-//     todoHeading.textContent = `TODO (${todoCount})`;
-//   } else if (task.status === "doing") {
-//     inProgressColumn.appendChild(listElement);
-//     inProgressCount++;
-//     inProgressHeading.textContent = `IN PROGRESS (${inProgressCount})`;
-//   } else if (task.status === "done") {
-//     doneColumn.appendChild(listElement);
-//     doneCount++;
-//     doneHeading.textContent = `DONE (${doneCount})`;
-//   }
-// }
-
-/**
  * Render a single task to the DOM inside the correct column.
  * - Creates a list item with styling and priority indicator.
  * - Adds event listener to open a modal when clicked.
@@ -176,52 +135,6 @@ async function fetchData() {
  * @param {"todo"|"doing"|"done"} task.status - Current task status.
  * @param {"low"|"medium"|"high"} task.priority - Priority level of the task.
  */
-// function renderDataToTheDom(task) {
-//   const listElement = document.createElement("li");
-//   listElement.className =
-//     "task mb-[21px] bg-white h-[65px] pt-[20px] px-[19px] pb-[21px] rounded-lg text-[15px] font-bold leading-[100%] text-rich-black shadow-custom-shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo dark:bg-dark-grey dark:text-white after:content-[''] after:inline-block after:w-3 after:h-3 after:rounded-full after:ml-3";
-
-//   // Set the priority color using after:
-//   if (task.priority === "low") listElement.classList.add("after:bg-green-500");
-//   else if (task.priority === "medium") listElement.classList.add("after:bg-orange-500");
-//   else if (task.priority === "high") listElement.classList.add("after:bg-red-500");
-
-//   listElement.setAttribute("tabindex", "0");
-//   listElement.textContent = task.title;
-//   listElement.setAttribute("data-id", task.id.toString());
-
-//   listElement.addEventListener("click", () => renderTaskModal(task));
-
-//   // Append to the correct column and update count
-//   if (task.status === "todo") {
-//     todoColumn.appendChild(listElement);
-//     todoCount++;
-//     todoHeading.textContent = `TODO (${todoCount})`;
-//   } else if (task.status === "doing") {
-//     inProgressColumn.appendChild(listElement);
-//     inProgressCount++;
-//     inProgressHeading.textContent = `IN PROGRESS (${inProgressCount})`;
-//   } else if (task.status === "done") {
-//     doneColumn.appendChild(listElement);
-//     doneCount++;
-//     doneHeading.textContent = `DONE (${doneCount})`;
-//   }
-
-//   // Now sort the column by priority so highest priority is first
-//   const priorityOrder = { high: 1, medium: 2, low: 3 };
-//   const column = task.status === "todo" ? todoColumn : task.status === "doing" ? inProgressColumn : doneColumn;
-
-//   // Convert children to array and sort by priority
-//   Array.from(column.children)
-//     .sort((a, b) => {
-//       const aTask = tasks.find(t => t.id == a.dataset.id);
-//       const bTask = tasks.find(t => t.id == b.dataset.id);
-//       const aPriority = aTask.priority ? priorityOrder[aTask.priority] : Infinity;
-//       const bPriority = bTask.priority ? priorityOrder[bTask.priority] : Infinity;
-//       return aPriority - bPriority;
-//     })
-//     .forEach(el => column.appendChild(el)); // re-append in order
-// }
 
 function renderDataToTheDom(task) {
   const listElement = document.createElement("li");
@@ -308,7 +221,7 @@ function renderTaskModal(task) {
       <div class="bg-black opacity-50 fixed top-0 left-0 w-full h-[130vh]"></div>
 
       <!-- Form Container -->
-      <div id="formContainer" class="bg-white dark:bg-dark-grey absolute top-[64px] lg:top-[240px] left-0 right-0 m-auto w-[343px] md:w-[600px] p-[24px] rounded-[6px] h-[600px] md:h-[560px] flex flex-col g-[24px]">
+      <div id="formContainer" class="bg-white dark:bg-dark-grey absolute top-[69px] left-[14px] right-[14px] m-auto w-[343px] md:w-[600px] p-[24px] rounded-[6px] h-[560px] md:h-[587px] flex flex-col g-[24px] md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2">
 
         <div class="flex items-center justify-between pb-4">
           <h2 class="text-[18px] dark:text-white font-bold leading-100%">Task</h2>
@@ -407,79 +320,6 @@ function renderTaskModal(task) {
  * @param {number} taskId - The ID of the task being edited.
  */
 
-// function renderEditedTaskToTheDOM(taskId) {
-//   let tasks = JSON.parse(localStorage.getItem("allTasks")) || [];
-
-//   // 1. Find the task to update
-//   const taskIndex = tasks.findIndex(task => task.id === taskId);
-//   if (taskIndex === -1) {
-//     alert("Task not found.");
-//     return;
-//   }
-
-//   // 2. Grab updated values from form
-//   const updatedTitle = document.getElementById("title").value.trim();
-//   const updatedDescription = document.getElementById("description").value.trim();
-//   const updatedStatus = document.getElementById("taskStatus").value;
-//   const updatedPriority = document.getElementById("taskPriority").value;
-
-//   if (updatedTitle === null || updatedTitle === undefined || updatedTitle.trim().length === 0) {
-//     // Focus the input so user knows where to type
-//     document.getElementById("title").focus();
-//     return;
-//   }
-
-//   // sort task by priority
-//   tasks.sort((a, b) => {
-//     const priorityOrder = { high: 1, medium: 2, low: 3 };
-//     return priorityOrder[a.priority] - priorityOrder[b.priority];
-//   });
-
-//   // 3. Update the task in array
-//   tasks[taskIndex] = {
-//     ...tasks[taskIndex],
-//     title: updatedTitle.charAt(0).toUpperCase() + updatedTitle.slice(1),
-//     description: updatedDescription,
-//     status: updatedStatus,
-//     priority: updatedPriority
-//   };
-
-//   // 4. Save back to localStorage
-//   localStorage.setItem("allTasks", JSON.stringify(tasks));
-
-//   // 5. Remove old DOM element
-//   const oldElement = document.querySelector(`li[data-id='${taskId}']`);
-//   if (oldElement) {
-//     oldElement.remove();
-//   }
-
-//   // 6. Re-render this one updated task
-//   renderDataToTheDom(tasks[taskIndex]);
-
-//   window.tasks = tasks;
-// }
-
-
-// delete current task
-// function deleteTaskById(taskId) {
-//   const userConfirmed = confirm("Do you want to delete this task?");
-//   if (!userConfirmed) return;
-
-//   // 1. Remove from tasks array
-//   tasks = tasks.filter(task => task.id !== taskId);
-
-//   // 2. Update localStorage
-//   localStorage.setItem("allTasks", JSON.stringify(tasks));
-
-//   // 3. Remove the DOM element (ensure both taskId and data-id are strings)
-//   const elementToRemove = document.querySelector(`li[data-id='${taskId}']`);
-//   if (elementToRemove) {
-//     elementToRemove.remove();
-//   }
-
-//   // 4. Recalculate counts
-//   recalcTaskCounts();
-// }
 function renderEditedTaskToTheDOM(taskId) {
   let tasks = JSON.parse(localStorage.getItem("allTasks")) || [];
 
@@ -539,14 +379,14 @@ function deleteTaskById(taskId) {
   const overlay = document.createElement("div");
   overlay.className = "fixed inset-0 z-50 flex items-center justify-center bg-black/50";
 
-  // Modal container + content
+  // Modal container  content
   overlay.innerHTML = `
     <div class="bg-white dark:bg-dark-grey p-6 rounded-lg shadow-lg w-72 sm:w-80 md:w-96 text-center">
       <p class="text-gray-800 dark:text-white text-lg font-semibold mb-4">
         Do you want to delete this task?
       </p>
       <div class="flex justify-center gap-4">
-        <button id="confirmDelete" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
+        <button id="confirmDelete" class="px-4 py-2 bg-red-500 text-black dark:text-white rounded hover:bg-red-600">
           Delete
         </button>
         <button id="cancelDelete" class="px-4 py-2 bg-gray-300 text-black rounded hover:bg-gray-400 
@@ -603,7 +443,7 @@ function recalcTaskCounts() {
 }
 
 /**
- * Initialize and handle mobile navigation menu.
+ * Handle mobile navigation menu.
  * - Opens a modal-style mobile navigation when toggle button is clicked.
  * - Provides backdrop, board list, "Launch Career" button, and theme toggle.
  * - Closes when close button is clicked.
@@ -668,8 +508,8 @@ function mobileNav() {
 }
 
 /**
- * Initialize "New Task" modal.
- * - Opens when any element with #newTaskButton is clicked.
+ * Create "New Task" modal.
+ * - Opens when the #newTaskButton is clicked.
  * - Contains form fields for creating a new task.
  * - Closes when close button or backdrop is clicked.
  *
@@ -686,7 +526,7 @@ function newTaskModal() {
         <!-- Backdrop -->
         <div class="bg-black opacity-50 fixed top-0 left-0 w-full h-[130vh]"></div>
 
-        <div id="formContainer" class="bg-white dark:bg-dark-grey absolute top-[69px] lg:top-[249px] left-0 right-0 m-auto w-[343px] md:w-[600px] p-[24px] rounded-[6px] h-[560px] md:h-[587px] flex flex-col g-[24px]">
+        <div id="formContainer" class="bg-white dark:bg-dark-grey absolute top-[69px] left-[14px] right-[14px] m-auto w-[343px] md:w-[600px] p-[24px] rounded-[6px] h-[560px] md:h-[587px] flex flex-col g-[24px] md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2">
 
           <div class="flex items-center justify-between pb-4">
             <h2 class="text-[18px] dark:text-white font-bold leading-100%">New Task</h2>
@@ -765,26 +605,27 @@ function newTaskModal() {
  * @function getNewTaskDetails
  * @returns {boolean} True if task was successfully created, false otherwise.
  */
+
 function getNewTaskDetails() {
   // calculate the id of task entered by user and have it start at the last id from array
-  // let id = tasks[tasks.length - 1 ].id + 1
   let id = tasks.length > 0 ? tasks[tasks.length - 1].id + 1 : 1;
-  // id: tasks.length ? Math.max(...tasks.map((t) => t.id)) + 1 : 1 another way to calculate the id
+  // another way to calculate the id:
+  // let id = tasks.length ? Math.max(...tasks.map((t) => t.id)) + 1 : 1;
 
   // get user title, description and status entered
   let title = document.getElementById("title").value.trim();
   let description = document.getElementById("description").value;
   let status = document.getElementById("taskStatus").value;
-  let priority = document.getElementById("taskPriority").value
+  let priority = document.getElementById("taskPriority").value;
   let errorMessage = document.getElementById("errorMessage");
 
   if (title === null || title === undefined || title.trim().length === 0) {
     // Focus the input so user knows where to type
     document.getElementById("title").focus();
-    errorMessage.classList.remove("hidden")
+    errorMessage.classList.remove("hidden");
     return false; 
   } else {
-    errorMessage.classList.add("hidden")  
+    errorMessage.classList.add("hidden");
   }
 
   title = title.charAt(0).toUpperCase() + title.slice(1);
@@ -794,19 +635,15 @@ function getNewTaskDetails() {
 
   // Push new task to the array
   tasks.push(newTask);
-  // sort task by priority
-  tasks.sort((a, b) => {
-    const priorityOrder = { high: 1, medium: 2, low: 3 };
-    return priorityOrder[a.priority] - priorityOrder[b.priority];
-  });
 
   renderDataToTheDom(newTask);
 
   // Save new tasks to local storage that persists on page load
-  // saveTasksToLocalStorage(tasks);
   localStorage.setItem("allTasks", JSON.stringify(tasks));
+
   return true;
 }
+
 
 /**
  * Toggle visibility of the sidebar when the "hide" button is clicked.
@@ -831,37 +668,6 @@ showSidebarBtn.addEventListener("click", () => {
   }
   showSidebarBtn.style.display = "none";
 });
-
-// if (localStorage.theme === 'dark') {
-//   document.documentElement.classList.add('dark');
-// }
-
-// function toggleTheme(enabled) {
-//   const desktopToggle = document.getElementById('desktopToggleBtn');
-//   const mobileToggle = document.getElementById('mobileToggleBtn');
-//   const logoChange = document.getElementById("kanbanLogo")
-
-//     if (enabled) {
-//     document.documentElement.classList.add('dark');
-//     localStorage.theme = 'dark';
-//     logoChange.src = "../assets/images/kanban-dark.svg";
-//   } else {
-//     document.documentElement.classList.remove('dark');
-//     localStorage.theme = 'light';
-//     logoChange.src = "../assets/images/kanban.svg";
-//     }
-
-//   // Sync both toggles if they exist in DOM
-//   if (desktopToggle) desktopToggle.checked = enabled;
-//   if (mobileToggle) mobileToggle.checked = enabled;
-// }
-
-// // Attach listeners for existing toggles
-// document.addEventListener('change', (e) => {
-//   if (e.target.id === 'desktopToggleBtn' || e.target.id === 'mobileToggleBtn') {
-//     toggleTheme(e.target.checked);
-//   }
-// });
 
 /**
  * Toggle dark/light theme across the application.
